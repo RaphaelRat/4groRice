@@ -7,7 +7,7 @@ Em breve estarei linkando com o artigo.
 
 #### Integrantes:
 * Igor Enrick - [LinkedIn](https://www.linkedin.com/in/igorenrick/), [GitHub](https://github.com/igorenrick)
-* Ivan Gabriel
+* Ivan Gabriel - [GitHub](https://github.com/R3N3GAD0)
 * Jhennifer Matias - [LinkedIn](https://www.linkedin.com/in/jhennifer-m-170818122/), [GitHub](https://github.com/jhennymatias)
 * Lucca Machado - [LinkedIn](https://www.linkedin.com/in/lucca-machado-da-silva-5072a3194/), [GitHub](https://github.com/LuccaMS)
 * Miguel Garcia - [LinkedIn](https://www.linkedin.com/in/miguel-garcia-silvestre-3265ab19b/), [GitHub](https://github.com/miguelsrrobo)
