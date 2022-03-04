@@ -16,7 +16,7 @@ class _EstimationSectionState extends State<EstimationSection> {
       children: [
         Container(
           padding: const EdgeInsets.fromLTRB(24, 24, 60, 24),
-          height: MediaQuery.of(context).size.height / 3,
+          height: MediaQuery.of(context).size.height / 4,
           width: MediaQuery.of(context).size.width,
           color: const Color.fromARGB(255, 212, 232, 231),
           child: Column(

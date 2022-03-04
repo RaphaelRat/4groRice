@@ -10,7 +10,7 @@ class ProfileSection extends StatelessWidget {
       children: [
         Container(
           padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
-          height: MediaQuery.of(context).size.height / 3,
+          height: MediaQuery.of(context).size.height / 4,
           width: MediaQuery.of(context).size.width,
           color: const Color.fromARGB(255, 212, 232, 231),
           child: Column(
