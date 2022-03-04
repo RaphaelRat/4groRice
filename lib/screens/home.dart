@@ -29,7 +29,24 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: _widgetOptions.elementAt(_selectedIndex),
+      body: NotificationListener<OverscrollIndicatorNotification>(
+        onNotification: (overscroll) {
+          overscroll.disallowIndicator();
+          return false;
+        },
+        child: PageView(
+          scrollDirection: Axis.horizontal,
+          children: const [
+            PlantationSection(),
+            EstimationSection(),
+            ProfileSection(),
+          ],
+          onPageChanged: (i) => setState(() {
+            _selectedIndex = i;
+          }),
+        ),
+      ),
+      // body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
