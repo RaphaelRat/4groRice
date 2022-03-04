@@ -12,18 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-
-  static const List<Widget> _widgetOptions = <Widget>[
-    PlantationSection(),
-    EstimationSection(),
-    ProfileSection(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  final _pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return false;
         },
         child: PageView(
+          controller: _pageController,
           scrollDirection: Axis.horizontal,
           children: const [
             PlantationSection(),
@@ -46,24 +36,14 @@ class _HomeScreenState extends State<HomeScreen> {
           }),
         ),
       ),
-      // body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.grass),
-            label: 'Plantações',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.pie_chart),
-            label: 'Cálculos',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.grass), label: 'Plantações', tooltip: 'Histórico'),
+          BottomNavigationBarItem(icon: Icon(Icons.pie_chart), label: 'Calculadora', tooltip: 'Calcule'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil', tooltip: 'Seus dados'),
         ],
         currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        onTap: (index) => _pageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.ease),
         selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
         backgroundColor: const Color.fromARGB(255, 65, 112, 110),
         unselectedItemColor: const Color.fromARGB(255, 206, 218, 217),
