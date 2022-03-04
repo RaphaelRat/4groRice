@@ -1,3 +1,4 @@
+import 'package:agrorice/screens/bottom_navigation_bar/widgets/appbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:agrorice/screens/login.dart';
 
@@ -6,109 +7,110 @@ class ProfileSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
       children: [
-        Container(
-          padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
-          height: MediaQuery.of(context).size.height / 4,
-          width: MediaQuery.of(context).size.width,
-          color: const Color.fromARGB(255, 212, 232, 231),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset('lib/assets/images/logo.png'),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
-                        ),
-                        ModalRoute.withName('/login'),
-                      );
-                    },
-                    child: const Text('SAIR'),
-                  ),
-                ],
+        appBarWidget(context, widget: _appBarWidget(context)),
+        Expanded(
+          child: ListView(
+            children: const [
+              Padding(
+                padding: EdgeInsets.fromLTRB(24, 36, 24, 6),
+                child: Text('Nome:'),
               ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    CircleAvatar(
-                      backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    Text(
-                      'Igor Enrick',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 65, 112, 110),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
+              Padding(
+                padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
+                child: TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Igor Enrick',
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
+                child: Text('Sobrenome'),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
+                child: TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'de Carvalho',
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
+                child: Text('Email'),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'igorenrickc@icloud.com',
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
+                child: Text('Senha:'),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(24, 6, 24, 48),
+                child: TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Senha',
+                  ),
                 ),
               ),
             ],
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.fromLTRB(24, 36, 24, 6),
-          child: Text('Nome:'),
+      ],
+    );
+  }
+
+  Row _appBarWidget(BuildContext context) {
+    return Row(
+      children: [
+        const Expanded(
+          child: Text(''),
         ),
-        const Padding(
-          padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
-          child: TextField(
-            obscureText: true,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Igor Enrick',
-            ),
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              CircleAvatar(
+                backgroundColor: Color.fromARGB(255, 255, 255, 255),
+              ),
+              Text(
+                'Igor Enrick',
+                style: TextStyle(
+                  color: Color.fromARGB(255, 65, 112, 110),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
-          child: Text('Sobrenome'),
-        ),
-        const Padding(
-          padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
-          child: TextField(
-            obscureText: true,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'de Carvalho',
-            ),
-          ),
-        ),
-        const Padding(
-          padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
-          child: Text('Email'),
-        ),
-        const Padding(
-          padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
-          child: TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'igorenrickc@icloud.com',
-            ),
-          ),
-        ),
-        const Padding(
-          padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
-          child: Text('Senha:'),
-        ),
-        const Padding(
-          padding: EdgeInsets.fromLTRB(24, 6, 24, 48),
-          child: TextField(
-            obscureText: true,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Senha',
-            ),
+        Expanded(
+          child: TextButton(
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LoginScreen(),
+                ),
+                ModalRoute.withName('/login'),
+              );
+            },
+            child: const Text('SAIR'),
           ),
         ),
       ],

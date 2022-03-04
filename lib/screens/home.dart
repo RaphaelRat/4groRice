@@ -17,6 +17,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 212, 232, 231),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Image.asset('lib/assets/images/logo.png'),
+        ),
+        elevation: 0,
+      ),
       body: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (overscroll) {
           overscroll.disallowIndicator();
