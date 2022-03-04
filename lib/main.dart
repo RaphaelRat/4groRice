@@ -1,3 +1,6 @@
+import 'package:agrorice/screens/home.dart';
+import 'package:agrorice/screens/login.dart';
+import 'package:agrorice/screens/register.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +16,13 @@ class MyApp extends StatelessWidget {
       title: '4grorice',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyHomePage(title: '4groRice'),
+      initialRoute: '/login',
+      routes: {
+        '/': (context) => const MyHomePage(title: '4groRice'),
+        '/register': (context) => const RegisterScreen(),
+        '/login': (context) => const LoginScreen(),
+        '/home': (context) => const HomeScreen(),
+      },
     );
   }
 }
@@ -70,7 +79,10 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: _incrementCounter, tooltip: 'Adicione um arroz', child: const Icon(Icons.add)),
+      floatingActionButton: FloatingActionButton(
+          onPressed: _incrementCounter,
+          tooltip: 'Adicione um arroz',
+          child: const Icon(Icons.add)),
     );
   }
 }
