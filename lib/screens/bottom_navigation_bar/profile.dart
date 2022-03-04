@@ -35,23 +35,23 @@ class ProfileSection extends StatelessWidget {
                   ),
                 ],
               ),
-              Column(
-                children: const [
-                  CircleAvatar(
-                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  Text(
-                    'Igor Enrick',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 65, 112, 110),
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    CircleAvatar(
+                      backgroundColor: Color.fromARGB(255, 255, 255, 255),
                     ),
-                  ),
-                ],
+                    Text(
+                      'Igor Enrick',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 65, 112, 110),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
