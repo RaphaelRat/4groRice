@@ -1,6 +1,6 @@
 # 4groRice
 
-Um aplicativo desenvolvido para a disciplina Projeto Integrador I (DEC0013) do curso de Engenharia de Computação da UFSC (Universidade Federal de Santa Catarina);
+Um aplicativo em desenvolvimento para a disciplina Projeto Integrador I (DEC0013) do curso de Engenharia de Computação da UFSC (Universidade Federal de Santa Catarina);
 
 A ideia do aplicativo é facilitar a vida do agricultor no plantio de arroz (Em breve mais detalhes).
 Em breve estarei linkando com o artigo.
