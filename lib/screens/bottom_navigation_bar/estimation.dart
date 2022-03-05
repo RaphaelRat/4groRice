@@ -1,6 +1,7 @@
-import 'package:agrorice/screens/bottom_navigation_bar/widgets/widgets.dart';
-import 'package:agrorice/screens/popup/estimate_result.dart';
 import 'package:flutter/material.dart';
+
+import './widgets/widgets.dart';
+import '../popup/estimate_result.dart';
 
 class EstimationSection extends StatefulWidget {
   const EstimationSection({Key? key}) : super(key: key);

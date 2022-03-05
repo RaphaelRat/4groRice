@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:agrorice/screens/home.dart';
-import 'package:agrorice/screens/register.dart';
+
+import './home.dart';
+import './register.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);

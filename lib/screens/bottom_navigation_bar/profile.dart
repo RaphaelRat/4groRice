@@ -1,6 +1,7 @@
-import 'package:agrorice/screens/bottom_navigation_bar/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:agrorice/screens/login.dart';
+
+import './widgets/widgets.dart';
+import '../login.dart';
 
 class ProfileSection extends StatelessWidget {
   const ProfileSection({Key? key}) : super(key: key);
