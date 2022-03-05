@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import './widgets/widgets.dart';
 import '../popup/water_quality.dart';
@@ -64,14 +65,7 @@ class PlantationSection extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const WaterQualityScreen(),
-                  ),
-                );
-              },
+              onPressed: () => Get.toNamed(WaterQualityScreen.route),
               child: const Text(
                 'MAIS SOBRE',
                 style: TextStyle(

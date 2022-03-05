@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class WaterSavingsScreen extends StatelessWidget {
+  static const route = '/water_savings';
+
   const WaterSavingsScreen({Key? key}) : super(key: key);
 
   @override
@@ -14,9 +17,7 @@ class WaterSavingsScreen extends StatelessWidget {
         children: [
           const Text('Economia da Água'),
           TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
+            onPressed: () => Get.back(),
             child: const Text('VOLTAR'),
           ),
         ],

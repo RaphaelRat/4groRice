@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import './widgets/widgets.dart';
 import '../popup/estimate_result.dart';
@@ -111,14 +112,7 @@ class _EstimationSectionState extends State<EstimationSection> {
                         style: ElevatedButton.styleFrom(
                           textStyle: const TextStyle(),
                         ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const EstimateResultScreen(),
-                            ),
-                          );
-                        },
+                        onPressed: () => Get.toNamed(EstimateResultScreen.route),
                         child: const Text('CALCULAR O USO DA ÁGUA'),
                       ),
                     ),

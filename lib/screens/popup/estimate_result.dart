@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:agrorice/screens/popup/water_savings.dart';
+import 'package:get/get.dart';
 
 class EstimateResultScreen extends StatelessWidget {
+  static const route = '/estimate_result';
   const EstimateResultScreen({Key? key}) : super(key: key);
 
   @override
@@ -16,20 +18,11 @@ class EstimateResultScreen extends StatelessWidget {
         children: [
           const Text('Resultado Cálculo da Água'),
           TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
+            onPressed: () => Get.back(),
             child: const Text('VOLTAR'),
           ),
           TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const WaterSavingsScreen(),
-                ),
-              );
-            },
+            onPressed: () => Get.toNamed(WaterSavingsScreen.route),
             child: const Text('COMO ECONOMIZAR'),
           ),
         ],
