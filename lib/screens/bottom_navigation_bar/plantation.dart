@@ -1,12 +1,20 @@
-import 'package:agrorice/screens/bottom_navigation_bar/widgets/appbar_widget.dart';
-import 'package:agrorice/screens/popup/water_quality.dart';
 import 'package:flutter/material.dart';
+
+import './widgets/widgets.dart';
+import '../popup/water_quality.dart';
 
 class PlantationSection extends StatelessWidget {
   const PlantationSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final _fields = [
+      fieldsWidget(),
+      fieldsWidget(hectares: 5, tempoPlantacao: 90, regiao: 'Sul', tempoDuracao: 95, preparacaoSolo: true, gastoDeAgua: 300),
+      fieldsWidget(hectares: 65, tempoPlantacao: 120, regiao: 'Norte', tempoDuracao: 150, preparacaoSolo: false, gastoDeAgua: 100),
+      fieldsWidget(hectares: 2, tempoPlantacao: 45, regiao: 'Sudeste', tempoDuracao: 32, preparacaoSolo: true, gastoDeAgua: 47),
+    ];
+
     return Column(
       children: [
         appBarWidget(
@@ -60,6 +68,7 @@ class PlantationSection extends StatelessWidget {
                   ],
                 ),
               ),
+              ..._fields,
             ],
           ),
         ),

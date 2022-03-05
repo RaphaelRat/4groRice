@@ -1,4 +1,4 @@
-import 'package:agrorice/screens/bottom_navigation_bar/widgets/appbar_widget.dart';
+import 'package:agrorice/screens/bottom_navigation_bar/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:agrorice/screens/login.dart';
 
