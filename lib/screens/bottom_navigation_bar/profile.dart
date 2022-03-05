@@ -112,7 +112,7 @@ class _ProfileSectionState extends State<ProfileSection> {
                   backgroundColor: Colors.white,
                   child: CircleAvatar(
                     radius: 30,
-                    backgroundImage: AssetImage('lib/assets/images/igor_picture.jpg'),
+                    backgroundImage: AssetImage('assets/images/igor_picture.jpg'),
                   ),
                 ),
               ),

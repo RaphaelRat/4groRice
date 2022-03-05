@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: MediaQuery.of(context).size.width >= 720 ? true : false,
         title: Padding(
           padding: const EdgeInsets.only(left: 8.0, top: 14),
-          child: Image.asset('lib/assets/images/logo.png'),
+          child: Image.asset('assets/images/logo.png'),
         ),
         elevation: 0,
       ),

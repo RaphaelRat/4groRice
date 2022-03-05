@@ -19,7 +19,7 @@ class RegisterScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('lib/assets/images/logo.png'),
+              Image.asset('assets/images/logo.png'),
               Card(
                 margin: const EdgeInsets.only(
                   left: 24,
