@@ -3,8 +3,15 @@ import 'package:flutter/material.dart';
 import './widgets/widgets.dart';
 import '../login.dart';
 
-class ProfileSection extends StatelessWidget {
+class ProfileSection extends StatefulWidget {
   const ProfileSection({Key? key}) : super(key: key);
+
+  @override
+  State<ProfileSection> createState() => _ProfileSectionState();
+}
+
+class _ProfileSectionState extends State<ProfileSection> {
+  bool isObscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -13,62 +20,67 @@ class ProfileSection extends StatelessWidget {
         appBarWidget(context, widget: _appBarWidget(context)),
         Expanded(
           child: ListView(
-            children: const [
-              Padding(
+            children: [
+              const Padding(
                 padding: EdgeInsets.fromLTRB(24, 36, 24, 6),
                 child: Text('Nome:'),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
                 child: TextField(
-                  obscureText: true,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Igor Enrick',
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
                 child: Text('Sobrenome'),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
                 child: TextField(
-                  obscureText: true,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'de Carvalho',
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
                 child: Text('Email'),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
                 child: TextField(
+                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'igorenrickc@icloud.com',
                   ),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
                 child: Text('Senha:'),
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(24, 6, 24, 48),
+                padding: const EdgeInsets.fromLTRB(24, 6, 24, 48),
                 child: TextField(
-                  obscureText: true,
+                  obscureText: isObscureText,
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Senha',
+                    border: const OutlineInputBorder(),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        isObscureText ? Icons.visibility : Icons.visibility_off,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          isObscureText = !isObscureText;
+                        });
+                      },
+                    ),
                   ),
                 ),
-              ),
+              )
             ],
           ),
         ),
