@@ -79,16 +79,23 @@ class ProfileSection extends StatelessWidget {
   Row _appBarWidget(BuildContext context) {
     return Row(
       children: [
-        const Expanded(
-          child: Text(''),
-        ),
         Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: const [
               CircleAvatar(
-                backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                backgroundColor: Color.fromARGB(255, 65, 112, 110),
+                radius: 33,
+                child: CircleAvatar(
+                  radius: 31,
+                  backgroundColor: Colors.white,
+                  child: CircleAvatar(
+                    radius: 30,
+                    backgroundImage: AssetImage('lib/assets/images/igor_picture.jpg'),
+                  ),
+                ),
               ),
+              SizedBox(width: 16),
               Text(
                 'Igor Enrick',
                 style: TextStyle(
@@ -100,19 +107,17 @@ class ProfileSection extends StatelessWidget {
             ],
           ),
         ),
-        Expanded(
-          child: TextButton(
-            onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const LoginScreen(),
-                ),
-                ModalRoute.withName('/login'),
-              );
-            },
-            child: const Text('SAIR'),
-          ),
+        TextButton(
+          onPressed: () {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LoginScreen(),
+              ),
+              ModalRoute.withName('/login'),
+            );
+          },
+          child: const Text('SAIR'),
         ),
       ],
     );

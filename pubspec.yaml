@@ -24,3 +24,4 @@ flutter:
 
   assets:
     - lib/assets/images/logo.png
+    - lib/assets/images/igor_picture.jpg
