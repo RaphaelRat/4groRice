@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './widgets/widgets.dart';
 import '../popup/water_quality.dart';
+import '../../utils/utils.dart';
 
 class PlantationSection extends StatelessWidget {
   const PlantationSection({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class PlantationSection extends StatelessWidget {
       children: [
         appBarWidget(
           context,
-          widget: const Text(
+          child: const Text(
             'Os últimos cálculos feitos das suas plantações',
             style: TextStyle(
               color: Color.fromARGB(255, 65, 112, 110),
@@ -31,48 +32,54 @@ class PlantationSection extends StatelessWidget {
         Expanded(
           child: ListView(
             children: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(24, 36, 24, 12),
-                padding: const EdgeInsets.fromLTRB(12, 24, 12, 6),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: const Color.fromARGB(255, 65, 112, 110),
-                ),
-                child: Column(
-                  children: [
-                    const Center(
-                      child: Text(
-                        'Conheça fatores que influenciam na qualidade da água utilizada em suas plantações.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                        ),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const WaterQualityScreen(),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        'MAIS SOBRE',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              _cardBox(context),
               ..._fields,
             ],
           ),
         ),
       ],
+    );
+  }
+
+  Widget _cardBox(BuildContext context) {
+    return responsiveContainer(
+      child: Container(
+        margin: const EdgeInsets.fromLTRB(24, 36, 24, 12),
+        padding: const EdgeInsets.fromLTRB(12, 24, 12, 6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: const Color.fromARGB(255, 65, 112, 110),
+        ),
+        child: Column(
+          children: [
+            const Center(
+              child: Text(
+                'Conheça fatores que influenciam na qualidade da água utilizada em suas plantações.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const WaterQualityScreen(),
+                  ),
+                );
+              },
+              child: const Text(
+                'MAIS SOBRE',
+                style: TextStyle(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './widgets/widgets.dart';
 import '../login.dart';
+import '../../utils/utils.dart';
 
 class ProfileSection extends StatefulWidget {
   const ProfileSection({Key? key}) : super(key: key);
@@ -17,71 +18,76 @@ class _ProfileSectionState extends State<ProfileSection> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        appBarWidget(context, widget: _appBarWidget(context)),
+        appBarWidget(context, child: _appBarWidget(context)),
         Expanded(
-          child: ListView(
-            children: [
-              const Padding(
-                padding: EdgeInsets.fromLTRB(24, 36, 24, 6),
-                child: Text('Nome:'),
-              ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+          child: SingleChildScrollView(
+            child: responsiveContainer(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(24, 36, 24, 6),
+                    child: Text('Nome:'),
                   ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
-                child: Text('Sobrenome'),
-              ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
-                child: Text('Email'),
-              ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
-                child: TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
-                child: Text('Senha:'),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(24, 6, 24, 48),
-                child: TextField(
-                  obscureText: isObscureText,
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        isObscureText ? Icons.visibility : Icons.visibility_off,
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
                       ),
-                      onPressed: () {
-                        setState(() {
-                          isObscureText = !isObscureText;
-                        });
-                      },
                     ),
                   ),
-                ),
-              )
-            ],
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
+                    child: Text('Sobrenome'),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
+                    child: Text('Email'),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
+                    child: TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
+                    child: Text('Senha:'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 6, 24, 48),
+                    child: TextField(
+                      obscureText: isObscureText,
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            isObscureText ? Icons.visibility : Icons.visibility_off,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              isObscureText = !isObscureText;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
           ),
         ),
       ],

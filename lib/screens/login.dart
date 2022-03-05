@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './home.dart';
 import './register.dart';
+import '../utils/utils.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -11,8 +12,9 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 212, 232, 231),
       body: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
+        child: responsiveContainer(
+          minHeight: MediaQuery.of(context).size.height,
+          maxWidth: 420,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [

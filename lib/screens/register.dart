@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/utils.dart';
+
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);
 
@@ -8,8 +10,9 @@ class RegisterScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 212, 232, 231),
       body: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
+        child: responsiveContainer(
+          minHeight: MediaQuery.of(context).size.height,
+          maxWidth: 420,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
