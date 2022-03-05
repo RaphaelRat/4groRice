@@ -1,14 +1,14 @@
 import 'package:get/get.dart';
 
-import '../screens/bottom_navigation_bar/estimation.dart';
-import '../screens/bottom_navigation_bar/plantation.dart';
-import '../screens/bottom_navigation_bar/profile.dart';
-import '../screens/home.dart';
-import '../screens/login.dart';
-import '../screens/popup/estimate_result.dart';
-import '../screens/popup/water_quality.dart';
-import '../screens/popup/water_savings.dart';
-import '../screens/register.dart';
+import '../modules/home/estimation/estimation.dart';
+import '../modules/home/plantation/plantation.dart';
+import '../modules/home/profile/profile.dart';
+import '../modules/home/home/home.dart';
+import '../modules/login/login.dart';
+import '../modules/estimate_result/estimate_result.dart';
+import '../modules/water_quality/water_quality.dart';
+import '../modules/water_savings/water_savings.dart';
+import '../modules/register/register.dart';
 
 List<GetPage> getAppPages() {
   return [

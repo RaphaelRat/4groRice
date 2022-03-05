@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import './widgets/widgets.dart';
-import '../popup/estimate_result.dart';
-import '../../utils/utils.dart';
+import '../local_widgets/widgets.dart';
+import '../../estimate_result/estimate_result.dart';
+import '../../../utils/utils.dart';
 
 class EstimationSection extends StatefulWidget {
   static const route = '/estimation';

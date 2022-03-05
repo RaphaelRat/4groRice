@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import './widgets/widgets.dart';
-import '../login.dart';
-import '../../utils/utils.dart';
+import '../local_widgets/widgets.dart';
+import '../../login/login.dart';
+import '../../../utils/utils.dart';
 
 class ProfileSection extends StatefulWidget {
   static const route = '/profile';

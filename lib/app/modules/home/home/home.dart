@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import './bottom_navigation_bar/estimation.dart';
-import './bottom_navigation_bar/plantation.dart';
-import './bottom_navigation_bar/profile.dart';
+import '../estimation/estimation.dart';
+import '../plantation/plantation.dart';
+import '../profile/profile.dart';
 
 class HomeScreen extends StatefulWidget {
   static const route = '/home';
