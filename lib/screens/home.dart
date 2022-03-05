@@ -40,22 +40,80 @@ class _HomeScreenState extends State<HomeScreen> {
             EstimationSection(),
             ProfileSection(),
           ],
-          onPageChanged: (i) => setState(() {
-            _selectedIndex = i;
-          }),
+          onPageChanged: _selectIndex,
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.grass), label: 'Plantações', tooltip: 'Histórico'),
-          BottomNavigationBarItem(icon: Icon(Icons.pie_chart), label: 'Calculadora', tooltip: 'Calcule'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil', tooltip: 'Seus dados'),
+      bottomNavigationBar: MediaQuery.of(context).size.width >= 720 ? _webBottomNavigationBar() : _mobileBottomNavigationBar(),
+    );
+  }
+
+  void _selectIndex(int index) {
+    return setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  BottomNavigationBar _mobileBottomNavigationBar() {
+    return BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(icon: Icon(Icons.grass), label: 'Plantações', tooltip: 'Histórico'),
+        BottomNavigationBarItem(icon: Icon(Icons.pie_chart), label: 'Calculadora', tooltip: 'Calcule'),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil', tooltip: 'Seus dados'),
+      ],
+      currentIndex: _selectedIndex,
+      onTap: (index) => _pageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.ease),
+      selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: const Color.fromARGB(255, 65, 112, 110),
+      unselectedItemColor: const Color.fromARGB(255, 206, 218, 217),
+    );
+  }
+
+  Container _webBottomNavigationBar() {
+    return Container(
+      height: 60,
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(255, 65, 112, 110),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _myItem(text: 'Plantações', index: 0),
+          const SizedBox(width: 120),
+          _myItem(text: 'Calculadora', index: 1),
+          const SizedBox(width: 120),
+          _myItem(text: 'Perfil', index: 2),
         ],
-        currentIndex: _selectedIndex,
-        onTap: (index) => _pageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.ease),
-        selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
-        backgroundColor: const Color.fromARGB(255, 65, 112, 110),
-        unselectedItemColor: const Color.fromARGB(255, 206, 218, 217),
+      ),
+    );
+  }
+
+  TextButton _myItem({required int index, required String text}) {
+    return TextButton(
+      style: ButtonStyle(
+        overlayColor: MaterialStateProperty.all(Colors.transparent),
+      ),
+      onPressed: () => _pageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.ease),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(
+            index == 0
+                ? Icons.grass
+                : index == 1
+                    ? Icons.pie_chart
+                    : Icons.person,
+            size: 32,
+            color: _selectedIndex == index ? const Color.fromARGB(255, 255, 255, 255) : const Color.fromARGB(255, 206, 218, 217),
+          ),
+          const SizedBox(width: 8),
+          Text(
+            text,
+            style: TextStyle(
+              fontSize: 18,
+              color: _selectedIndex == index ? const Color.fromARGB(255, 255, 255, 255) : const Color.fromARGB(255, 206, 218, 217),
+            ),
+          ),
+        ],
       ),
     );
   }
