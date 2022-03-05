@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/utils/utils.dart';
+import '../../global_widgets/responsive_container.dart';
 
 class RegisterScreen extends StatelessWidget {
   static const route = '/register';

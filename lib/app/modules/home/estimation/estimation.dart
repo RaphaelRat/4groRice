@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../local_widgets/widgets.dart';
 import '../../estimate_result/estimate_result.dart';
-import '../../../core/utils/utils.dart';
+import '../../../global_widgets/responsive_container.dart';
 
 class EstimationSection extends StatefulWidget {
   static const route = '/estimation';

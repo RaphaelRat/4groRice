@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/utils/utils.dart';
+import '../../../global_widgets/responsive_container.dart';
 
 Widget appBarWidget(BuildContext context, {required Widget child}) => Container(
       padding: const EdgeInsets.all(24),
