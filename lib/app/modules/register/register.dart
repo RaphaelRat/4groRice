@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../utils/utils.dart';
+import '../../core/utils/utils.dart';
 
 class RegisterScreen extends StatelessWidget {
   static const route = '/register';

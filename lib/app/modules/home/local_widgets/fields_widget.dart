@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/utils.dart';
+import '../../../core/utils/utils.dart';
 
 Widget fieldsWidget({
   double? hectares,

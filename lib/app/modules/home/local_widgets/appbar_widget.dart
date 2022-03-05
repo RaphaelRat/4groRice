@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/utils.dart';
+import '../../../core/utils/utils.dart';
 
 Widget appBarWidget(BuildContext context, {required Widget child}) => Container(
       padding: const EdgeInsets.all(24),

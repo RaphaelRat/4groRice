@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../local_widgets/widgets.dart';
 import '../../water_quality/water_quality.dart';
-import '../../../utils/utils.dart';
+import '../../../core/utils/utils.dart';
 
 class PlantationSection extends StatelessWidget {
   static const route = '/plantation';

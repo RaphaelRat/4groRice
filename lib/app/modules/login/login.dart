@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../home/home/home.dart';
 import '../register/register.dart';
-import '../../utils/utils.dart';
+import '../../core/utils/utils.dart';
 
 class LoginScreen extends StatelessWidget {
   static const route = '/login';
