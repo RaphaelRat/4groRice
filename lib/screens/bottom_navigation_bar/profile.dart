@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import './widgets/widgets.dart';
 import '../login.dart';
 import '../../utils/utils.dart';
 
 class ProfileSection extends StatefulWidget {
+  static const route = '/profile';
+
   const ProfileSection({Key? key}) : super(key: key);
 
   @override
@@ -126,15 +129,7 @@ class _ProfileSectionState extends State<ProfileSection> {
           ),
         ),
         TextButton(
-          onPressed: () {
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const LoginScreen(),
-              ),
-              ModalRoute.withName('/login'),
-            );
-          },
+          onPressed: () => Get.offAllNamed(LoginScreen.route),
           child: const Text('SAIR'),
         ),
       ],

@@ -5,6 +5,8 @@ import '../popup/water_quality.dart';
 import '../../utils/utils.dart';
 
 class PlantationSection extends StatelessWidget {
+  static const route = '/plantation';
+
   const PlantationSection({Key? key}) : super(key: key);
 
   @override

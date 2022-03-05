@@ -5,6 +5,8 @@ import './bottom_navigation_bar/plantation.dart';
 import './bottom_navigation_bar/profile.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const route = '/home';
+
   const HomeScreen({Key? key}) : super(key: key);
 
   @override

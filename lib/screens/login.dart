@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import './home.dart';
 import './register.dart';
 import '../utils/utils.dart';
 
 class LoginScreen extends StatelessWidget {
+  static const route = '/login';
+
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -51,15 +54,7 @@ class LoginScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           textStyle: const TextStyle(),
                         ),
-                        onPressed: () {
-                          Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomeScreen(),
-                            ),
-                            ModalRoute.withName('/home'),
-                          );
-                        },
+                        onPressed: () => Get.offAllNamed(HomeScreen.route),
                         child: const Text('ENTRAR'),
                       ),
                     ],
@@ -70,14 +65,7 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   const Text('Não possui uma conta?'),
                   TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RegisterScreen(),
-                        ),
-                      );
-                    },
+                    onPressed: () => Get.toNamed(RegisterScreen.route),
                     child: const Text('REGISTRAR'),
                   ),
                 ],

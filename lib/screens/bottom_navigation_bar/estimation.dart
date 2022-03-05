@@ -5,6 +5,8 @@ import '../popup/estimate_result.dart';
 import '../../utils/utils.dart';
 
 class EstimationSection extends StatefulWidget {
+  static const route = '/estimation';
+
   const EstimationSection({Key? key}) : super(key: key);
 
   @override

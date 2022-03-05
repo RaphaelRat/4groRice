@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../utils/utils.dart';
 
 class RegisterScreen extends StatelessWidget {
+  static const route = '/register';
   const RegisterScreen({Key? key}) : super(key: key);
 
   @override
@@ -79,9 +81,7 @@ class RegisterScreen extends StatelessWidget {
                 children: [
                   const Text('Já possui uma conta?'),
                   TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                    onPressed: () => Get.back(),
                     child: const Text('FAZER LOGIN'),
                   ),
                 ],
