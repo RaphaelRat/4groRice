@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 
-import '../../../global_widgets/responsive_container.dart';
+import 'responsive_container.dart';
 
 Widget fieldsWidget({
   double? hectares,
   int? tempoPlantacao,
   String? regiao,
   int? tempoDuracao,
-  bool? preparacaoSolo,
+  bool preparacaoSolo = false,
   double? gastoDeAgua,
+  bool hasDivider = true,
 }) {
   return responsiveContainer(
     child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 22),
+      padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 11),
       child: Column(
         children: [
           rowOfFields(
@@ -26,11 +27,11 @@ Widget fieldsWidget({
           ),
           const SizedBox(height: 22),
           rowOfFields(
-            left: columnOfFields(field: 'Preparação do Solo', value: '${preparacaoSolo ?? '?'}'),
+            left: columnOfFields(field: 'Preparação do Solo', value: preparacaoSolo ? 'Sim' : 'Não'),
             right: columnOfFields(field: 'Gasto de água', value: '${gastoDeAgua ?? '?'} mil litros', color: const Color.fromARGB(255, 65, 112, 110)),
           ),
-          const SizedBox(height: 22),
-          const Divider(color: Color.fromARGB(255, 212, 232, 231), thickness: 1),
+          hasDivider ? const SizedBox(height: 22) : Container(),
+          hasDivider ? const Divider(color: Color.fromARGB(255, 212, 232, 231), thickness: 1) : Container(),
         ],
       ),
     ),

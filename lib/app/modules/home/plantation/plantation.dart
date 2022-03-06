@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 
-import '../local_widgets/widgets.dart';
 import '../../water_quality/water_quality.dart';
-import '../../../global_widgets/responsive_container.dart';
+import '../../../global_widgets/global_widgets.dart';
 
 class PlantationSection extends StatelessWidget {
   static const route = '/plantation';
@@ -47,7 +46,7 @@ class PlantationSection extends StatelessWidget {
   Widget _cardBox(BuildContext context) {
     return responsiveContainer(
       child: Container(
-        margin: const EdgeInsets.fromLTRB(24, 36, 24, 12),
+        margin: const EdgeInsets.fromLTRB(24, 22, 24, 11),
         padding: const EdgeInsets.fromLTRB(12, 24, 12, 6),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
