@@ -6,8 +6,8 @@ Widget fieldsWidget({
   double? hectares,
   int? tempoPlantacao,
   String? regiao,
-  int? tempoDuracao,
-  bool preparacaoSolo = false,
+  int? vazao,
+  int? preparacaoSolo,
   double? gastoDeAgua,
   bool hasDivider = true,
 }) {
@@ -17,28 +17,43 @@ Widget fieldsWidget({
       child: Column(
         children: [
           rowOfFields(
-            left: columnOfFields(field: 'Hectares', value: '${hectares ?? '?'}'),
-            right: columnOfFields(field: 'Tempo de plantação', value: '${tempoPlantacao ?? '?'} Dias'),
+            left:
+                columnOfFields(field: 'Hectares', value: '${hectares ?? '?'}'),
+            right: columnOfFields(
+                field: 'Tempo de plantação',
+                value: '${tempoPlantacao ?? '?'} Dias'),
           ),
           const SizedBox(height: 22),
           rowOfFields(
             left: columnOfFields(field: 'Região', value: regiao ?? '?'),
-            right: columnOfFields(field: 'Tempo de duração', value: '${tempoDuracao ?? '?'} Dias'),
+            right:
+                columnOfFields(field: 'Vazão', value: '${vazao ?? '?'} Litros'),
           ),
           const SizedBox(height: 22),
           rowOfFields(
-            left: columnOfFields(field: 'Preparação do Solo', value: preparacaoSolo ? 'Sim' : 'Não'),
-            right: columnOfFields(field: 'Gasto de água', value: '${gastoDeAgua ?? '?'} mil litros', color: const Color.fromARGB(255, 65, 112, 110)),
+            left: columnOfFields(
+                field: 'Preparação do Solo',
+                value: preparacaoSolo != 0
+                    ? '${tempoPlantacao ?? '?'} Dias'
+                    : 'Não'),
+            right: columnOfFields(
+                field: 'Gasto de água',
+                value: '${gastoDeAgua ?? '?'} mil litros',
+                color: const Color.fromARGB(255, 65, 112, 110)),
           ),
           hasDivider ? const SizedBox(height: 22) : Container(),
-          hasDivider ? const Divider(color: Color.fromARGB(255, 212, 232, 231), thickness: 1) : Container(),
+          hasDivider
+              ? const Divider(
+                  color: Color.fromARGB(255, 212, 232, 231), thickness: 1)
+              : Container(),
         ],
       ),
     ),
   );
 }
 
-Widget columnOfFields({required String field, required String value, Color? color}) {
+Widget columnOfFields(
+    {required String field, required String value, Color? color}) {
   return Expanded(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,

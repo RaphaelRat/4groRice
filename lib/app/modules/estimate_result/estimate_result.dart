@@ -37,7 +37,13 @@ class EstimateResultScreen extends StatelessWidget {
               ),
               _cardBox(),
               fieldsWidget(
-                  hasDivider: false, hectares: 5, tempoPlantacao: 90, regiao: 'Sul', tempoDuracao: 95, preparacaoSolo: true, gastoDeAgua: 300),
+                  hasDivider: false,
+                  hectares: 5,
+                  tempoPlantacao: 90,
+                  regiao: 'Sul',
+                  vazao: 95,
+                  preparacaoSolo: 3,
+                  gastoDeAgua: 300),
               const Padding(
                 padding: EdgeInsets.only(left: 12, right: 12, top: 20),
                 child: Text(
@@ -54,7 +60,10 @@ class EstimateResultScreen extends StatelessWidget {
                 onPressed: () => Get.toNamed(WaterSavingsScreen.route),
                 child: const Text(
                   'COMO ECONOMIZAR',
-                  style: TextStyle(color: Color.fromARGB(255, 65, 112, 110), fontSize: 14, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 65, 112, 110),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500),
                 ),
               ),
               const SizedBox(height: 15),
@@ -76,7 +85,9 @@ class EstimateResultScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 8.0, top: 8),
                 child: GestureDetector(
                   onTap: () {
-                    Get.previousRoute.isEmpty ? Get.toNamed(HomeScreen.route) : Get.back();
+                    Get.previousRoute.isEmpty
+                        ? Get.toNamed(HomeScreen.route)
+                        : Get.back();
                   },
                   child: Row(
                     children: const [
@@ -88,7 +99,10 @@ class EstimateResultScreen extends StatelessWidget {
                       SizedBox(width: 6),
                       Text(
                         'Voltar',
-                        style: TextStyle(color: Color.fromARGB(255, 65, 112, 110), fontWeight: FontWeight.w500, letterSpacing: 1.1),
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 65, 112, 110),
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: 1.1),
                       )
                     ],
                   ),
@@ -167,7 +181,10 @@ class EstimateResultScreen extends StatelessWidget {
                     SizedBox(width: 6),
                     Text(
                       'Voltar',
-                      style: TextStyle(color: Color.fromARGB(255, 65, 112, 110), fontWeight: FontWeight.w500, letterSpacing: 1.1),
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 65, 112, 110),
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 1.1),
                     )
                   ],
                 ),

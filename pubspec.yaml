@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   get: ^4.6.1
   cupertino_icons: ^1.0.2
+  url_launcher: ^6.0.0-nullsafety
 
 dev_dependencies:
   flutter_test:
@@ -26,3 +27,4 @@ flutter:
     - assets/images/logo.png
     - assets/images/igor_picture.jpg
     - assets/images/people_picture.png
+    - assets/images/water_savings.jpg

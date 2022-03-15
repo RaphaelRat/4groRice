@@ -38,20 +38,20 @@ class _EstimationSectionState extends State<EstimationSection> {
                 children: [
                   const Padding(
                     padding: EdgeInsets.fromLTRB(24, 36, 24, 6),
-                    child: Text('Quantidade de hectares da sua plantação:'),
+                    child: Text('Vazão da Taipa:'),
                   ),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
                     child: TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: 'Hectares',
+                        labelText: 'Vazão',
                       ),
                     ),
                   ),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
-                    child: Text('Tempo de plantação (em dias):'),
+                    child: Text('Tempo de Plantação (em dias):'),
                   ),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
@@ -64,14 +64,14 @@ class _EstimationSectionState extends State<EstimationSection> {
                   ),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
-                    child: Text('Tempo de duração (em dias):'),
+                    child: Text('Hectares:'),
                   ),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
                     child: TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: 'Duração',
+                        labelText: 'Hectares',
                       ),
                     ),
                   ),
@@ -104,6 +104,27 @@ class _EstimationSectionState extends State<EstimationSection> {
                       ],
                     ),
                   ),
+                  solo
+                      ? Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
+                              child: Text('Tempo de Preparação (em dias):'),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Preparação',
+                                ),
+                              ),
+                            )
+                          ],
+                        )
+                      : const SizedBox(),
                   Center(
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(24, 12, 24, 48),
@@ -111,7 +132,8 @@ class _EstimationSectionState extends State<EstimationSection> {
                         style: ElevatedButton.styleFrom(
                           textStyle: const TextStyle(),
                         ),
-                        onPressed: () => Get.toNamed(EstimateResultScreen.route),
+                        onPressed: () =>
+                            Get.toNamed(EstimateResultScreen.route),
                         child: const Text('CALCULAR O USO DA ÁGUA'),
                       ),
                     ),

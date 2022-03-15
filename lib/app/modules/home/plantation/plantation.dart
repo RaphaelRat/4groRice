@@ -13,9 +13,27 @@ class PlantationSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final _fields = [
       fieldsWidget(),
-      fieldsWidget(hectares: 5, tempoPlantacao: 90, regiao: 'Sul', tempoDuracao: 95, preparacaoSolo: true, gastoDeAgua: 300),
-      fieldsWidget(hectares: 65, tempoPlantacao: 120, regiao: 'Norte', tempoDuracao: 150, preparacaoSolo: false, gastoDeAgua: 100),
-      fieldsWidget(hectares: 2, tempoPlantacao: 45, regiao: 'Sudeste', tempoDuracao: 32, preparacaoSolo: true, gastoDeAgua: 47),
+      fieldsWidget(
+          hectares: 5,
+          tempoPlantacao: 90,
+          regiao: 'Sul',
+          vazao: 95,
+          preparacaoSolo: 1,
+          gastoDeAgua: 300),
+      fieldsWidget(
+          hectares: 65,
+          tempoPlantacao: 120,
+          regiao: 'Norte',
+          vazao: 150,
+          preparacaoSolo: 0,
+          gastoDeAgua: 100),
+      fieldsWidget(
+          hectares: 2,
+          tempoPlantacao: 45,
+          regiao: 'Sudeste',
+          vazao: 32,
+          preparacaoSolo: 12,
+          gastoDeAgua: 47),
     ];
 
     return Column(
