@@ -12,7 +12,9 @@ dependencies:
     sdk: flutter
   get: ^4.6.1
   cupertino_icons: ^1.0.2
-  url_launcher: ^6.0.0-nullsafety
+  url_launcher: ^6.0.0-nullsafety  
+  http: ^0.13.4
+  http_interceptor: ^1.0.2
 
 dev_dependencies:
   flutter_test:
