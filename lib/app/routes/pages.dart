@@ -1,3 +1,4 @@
+import 'package:agrorice/app/modules/login/login_controller.dart';
 import 'package:get/get.dart';
 
 import '../modules/home/profile/profile_controller.dart';
@@ -22,7 +23,7 @@ List<GetPage> getAppPages() {
         BindingsBuilder(() => Get.lazyPut(() => ProfileController())),
       ],
     ),
-    GetPage(name: LoginScreen.route, page: () => const LoginScreen()),
+    GetPage(name: LoginScreen.route, page: () => const LoginScreen(), binding: BindingsBuilder(() => Get.lazyPut(() => LoginController()))),
     GetPage(name: RegisterScreen.route, page: () => RegisterScreen()),
     GetPage(name: EstimationPage.route, page: () => const EstimationPage()),
     GetPage(name: PlantationSection.route, page: () => const PlantationSection()),
