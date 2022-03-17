@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../estimation/estimation.dart';
+import '../estimation/estimation_page.dart';
 import '../plantation/plantation.dart';
 import '../profile/profile.dart';
 
@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
           scrollDirection: Axis.horizontal,
           children: const [
             PlantationSection(),
-            EstimationSection(),
+            EstimationPage(),
             ProfileSection(),
           ],
           onPageChanged: _selectIndex,

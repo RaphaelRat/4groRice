@@ -1,20 +1,15 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
+import './estimation_controller.dart';
 import '../../estimate_result/estimate_result.dart';
 import '../../../global_widgets/global_widgets.dart';
 
-class EstimationSection extends StatefulWidget {
+class EstimationPage extends GetView<EstimationController> {
   static const route = '/estimation';
 
-  const EstimationSection({Key? key}) : super(key: key);
+  const EstimationPage({Key? key}) : super(key: key);
 
-  @override
-  State<EstimationSection> createState() => _EstimationSectionState();
-}
-
-class _EstimationSectionState extends State<EstimationSection> {
-  bool solo = true;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -90,41 +85,39 @@ class _EstimationSectionState extends State<EstimationSection> {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text('Preparação do solo? ${solo ? 'Sim' : 'Não'}'),
-                        Switch(
-                            value: solo,
-                            onChanged: (value) {
-                              setState(() {
-                                solo = value;
-                              });
-                            }),
-                      ],
+                    child: Obx(
+                      () => Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text('Preparação do solo? ${controller.solo.value ? 'Sim' : 'Não'}'),
+                          Switch(value: controller.solo.value, onChanged: (value) => controller.solo.value = value),
+                        ],
+                      ),
                     ),
                   ),
-                  solo
-                      ? Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
-                              child: Text('Tempo de Preparação (em dias):'),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  labelText: 'Preparação',
-                                ),
+                  Obx(
+                    () => controller.solo.value
+                        ? Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
+                                child: Text('Tempo de Preparação (em dias):'),
                               ),
-                            )
-                          ],
-                        )
-                      : const SizedBox(),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Preparação',
+                                  ),
+                                ),
+                              )
+                            ],
+                          )
+                        : const SizedBox(),
+                  ),
                   Center(
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(24, 12, 24, 48),
@@ -132,8 +125,7 @@ class _EstimationSectionState extends State<EstimationSection> {
                         style: ElevatedButton.styleFrom(
                           textStyle: const TextStyle(),
                         ),
-                        onPressed: () =>
-                            Get.toNamed(EstimateResultScreen.route),
+                        onPressed: () => Get.toNamed(EstimateResultScreen.route),
                         child: const Text('CALCULAR O USO DA ÁGUA'),
                       ),
                     ),
