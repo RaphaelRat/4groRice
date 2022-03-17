@@ -1,50 +1,45 @@
 // Modelo do cálculo de estimativa do uso de água
 
-import 'dart:ffi';
+class Estimativa {
+  late double hectares;
+  late int tempoPlantacao;
+  late String regiao;
+  late int vazao;
+  late int preparacaoSolo;
+  late double gastoDeAgua;
+  late double volume;
 
-class Estimate {
-  late Int32 acre;
-  late Int32 plantingTime;
-  late String region;
-  late Int32 duration;
-  late bool soilPreparation;
-  late Int32 waterConsumption;
+  Estimativa(this.hectares, this.tempoPlantacao, this.regiao, this.vazao,
+      this.preparacaoSolo, this.gastoDeAgua, this.volume);
 
-  Estimate(
-    this.acre,
-    this.plantingTime,
-    this.region,
-    this.duration,
-    this.soilPreparation,
-    this.waterConsumption,
-  );
-
-  Estimate.fromJson(Map<String, dynamic> json)
-      : acre = json['acre'].toString() == 'null' ? '' : json['acre'],
-        plantingTime = json['planting_time'].toString() == 'null'
+  Estimativa.fromJson(Map<String, dynamic> json)
+      : hectares =
+            json['Hectares'].toString() == 'null' ? '' : json['Hectares'],
+        tempoPlantacao = json['Tempo_de_plantacao'].toString() == 'null'
             ? ''
-            : json['planting_time'],
-        region = json['region'].toString() == 'null' ? '' : json['region'],
-        duration =
-            json['duration'].toString() == 'null' ? '' : json['duration'],
-        soilPreparation = json['soil_preparation'].toString() == 'null'
+            : json['Tempo_de_plantacao'],
+        regiao = json['Regiao'].toString() == 'null' ? '' : json['Regiao'],
+        vazao = json['Vazao'].toString() == 'null' ? '' : json['Vazao'],
+        preparacaoSolo = json['Preparacao_do_solo'].toString() == 'null'
             ? ''
-            : json['soil_preparation'],
-        waterConsumption = json['water_consumption'].toString() == 'null'
+            : json['Preparacao_do_solo'],
+        gastoDeAgua = json['Gasto_de_agua'].toString() == 'null'
             ? ''
-            : json['water_consumption'];
+            : json['Gasto_de_agua'],
+        volume = json['Volume'].toString() == 'null' ? '' : json['Volume'];
 
   Map<String, dynamic> toJson() => {
-        'acre': acre,
-        'planting_time': plantingTime,
-        'region': region,
-        'duration': duration,
-        'soil_preparation': soilPreparation,
-        'water_consumption': waterConsumption,
+        'hectares': hectares,
+        'tempo_de_plantacao': tempoPlantacao,
+        'regiao': regiao,
+        'vazao': vazao,
+        'preparacao_do_solo': preparacaoSolo,
+        'gasto_de_agua': gastoDeAgua,
+        'volume': volume,
       };
 
   @override
   String toString() {
-    return 'Estimate{acre: $acre, plantingTime: $plantingTime, region: $region, duration: $duration, soilPreparation: $soilPreparation, waterConsumption: $waterConsumption}';
+    return 'Estimativa{hectares: $hectares, tempoPlantacao: $tempoPlantacao, regiao: $regiao, vazao: $vazao, preparacaoSolo: $preparacaoSolo, gastoDeAgua: $gastoDeAgua, volume: $volume}';
   }
 }
