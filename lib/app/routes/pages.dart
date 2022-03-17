@@ -23,7 +23,7 @@ List<GetPage> getAppPages() {
       ],
     ),
     GetPage(name: LoginScreen.route, page: () => const LoginScreen()),
-    GetPage(name: RegisterScreen.route, page: () => const RegisterScreen()),
+    GetPage(name: RegisterScreen.route, page: () => RegisterScreen()),
     GetPage(name: EstimationPage.route, page: () => const EstimationPage()),
     GetPage(name: PlantationSection.route, page: () => const PlantationSection()),
     GetPage(name: ProfilePage.route, page: () => const ProfilePage()),

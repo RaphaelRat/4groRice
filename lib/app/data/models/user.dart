@@ -1,7 +1,7 @@
 // Modelo da conta do usuário
 
 class Usuario {
-  late String id;
+  late int id;
   late String username;
   late String email;
   late String jwt;
@@ -15,12 +15,8 @@ class Usuario {
 
   Usuario.fromJson(Map<String, dynamic> json)
       : id = json['user']['id'].toString() == 'null' ? '' : json['user']['id'],
-        username = json['user']['username'].toString() == 'null'
-            ? ''
-            : json['user']['username'],
-        email = json['user']['email'].toString() == 'null'
-            ? ''
-            : json['user']['email'],
+        username = json['user']['username'].toString() == 'null' ? '' : json['user']['username'],
+        email = json['user']['email'].toString() == 'null' ? '' : json['user']['email'],
         jwt = json['jwt'].toString() == 'null' ? '' : json['jwt'];
 
   Map<String, dynamic> toJson() => {
