@@ -150,7 +150,7 @@ class WaterQualityScreen extends StatelessWidget {
             leading: Padding(
               padding: const EdgeInsets.only(left: 8.0, top: 8),
               child: GestureDetector(
-                onTap: Get.back,
+                onTap: () => Get.previousRoute == HomeScreen.route ? Get.back() : Get.offAndToNamed(HomeScreen.route),
                 child: Row(
                   children: const [
                     Icon(
@@ -183,10 +183,7 @@ Widget _webAppBar(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, top: 8),
                 child: GestureDetector(
-                  onTap: () {
-                    // Get.previousRoute.isEmpty ? Get.toNamed(HomeScreen.route) : Get.back();
-                    Get.previousRoute == HomeScreen.route ? Get.back() : Get.offNamed(HomeScreen.route);
-                  },
+                  onTap: () => Get.previousRoute == HomeScreen.route ? Get.back() : Get.offAndToNamed(HomeScreen.route),
                   child: Row(
                     children: const [
                       Icon(
