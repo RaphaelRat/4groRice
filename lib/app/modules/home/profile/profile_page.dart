@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import './profile_controller.dart';
 import '../../login/login.dart';
 import '../../../global_widgets/global_widgets.dart';
 
-class ProfileSection extends StatefulWidget {
+class ProfilePage extends GetView<ProfileController> {
   static const route = '/profile';
 
-  const ProfileSection({Key? key}) : super(key: key);
-
-  @override
-  State<ProfileSection> createState() => _ProfileSectionState();
-}
-
-class _ProfileSectionState extends State<ProfileSection> {
-  bool isObscureText = true;
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -70,19 +64,17 @@ class _ProfileSectionState extends State<ProfileSection> {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 6, 24, 48),
-                    child: TextField(
-                      obscureText: isObscureText,
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            isObscureText ? Icons.visibility : Icons.visibility_off,
+                    child: Obx(
+                      () => TextField(
+                        obscureText: controller.isObscureText.value,
+                        decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              controller.isObscureText.value ? Icons.visibility : Icons.visibility_off,
+                            ),
+                            onPressed: () => controller.isObscureText.value = !controller.isObscureText.value,
                           ),
-                          onPressed: () {
-                            setState(() {
-                              isObscureText = !isObscureText;
-                            });
-                          },
                         ),
                       ),
                     ),

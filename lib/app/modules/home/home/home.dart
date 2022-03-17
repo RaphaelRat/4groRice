@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../estimation/estimation_page.dart';
 import '../plantation/plantation.dart';
-import '../profile/profile.dart';
+import '../profile/profile_page.dart';
 
 class HomeScreen extends StatefulWidget {
   static const route = '/home';
@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: const [
             PlantationSection(),
             EstimationPage(),
-            ProfileSection(),
+            ProfilePage(),
           ],
           onPageChanged: _selectIndex,
         ),
