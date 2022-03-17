@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/login/login_controller.dart';
+import '../modules/register/register_controller.dart';
 import '../modules/home/profile/profile_controller.dart';
 import '../modules/home/estimation/estimation_controller.dart';
 import '../modules/home/estimation/estimation_page.dart';
@@ -22,8 +24,8 @@ List<GetPage> getAppPages() {
         BindingsBuilder(() => Get.lazyPut(() => ProfileController())),
       ],
     ),
-    GetPage(name: LoginScreen.route, page: () => const LoginScreen()),
-    GetPage(name: RegisterScreen.route, page: () => RegisterScreen()),
+    GetPage(name: LoginScreen.route, page: () => const LoginScreen(), binding: BindingsBuilder(() => Get.lazyPut(() => LoginController()))),
+    GetPage(name: RegisterScreen.route, page: () => RegisterScreen(), binding: BindingsBuilder(() => Get.lazyPut(() => RegisterController()))),
     GetPage(name: EstimationPage.route, page: () => const EstimationPage()),
     GetPage(name: PlantationSection.route, page: () => const PlantationSection()),
     GetPage(name: ProfilePage.route, page: () => const ProfilePage()),

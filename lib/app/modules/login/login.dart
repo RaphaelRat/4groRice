@@ -1,3 +1,4 @@
+import 'package:agrorice/app/modules/login/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -5,7 +6,7 @@ import '../home/home/home.dart';
 import '../register/register.dart';
 import '../../global_widgets/responsive_container.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends GetView<LoginController> {
   static const route = '/login';
 
   const LoginScreen({Key? key}) : super(key: key);
@@ -31,8 +32,9 @@ class LoginScreen extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(18, 48, 18, 18),
                   child: Column(
                     children: [
-                      const TextField(
-                        decoration: InputDecoration(
+                      TextField(
+                        controller: controller.emailController,
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'Email',
                         ),
@@ -40,11 +42,20 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: 12,
                       ),
-                      const TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Senha',
+                      Obx(
+                        () => TextField(
+                          controller: controller.senhaController,
+                          obscureText: controller.isObscureText.value,
+                          decoration: InputDecoration(
+                            border: const OutlineInputBorder(),
+                            labelText: 'Senha',
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                controller.isObscureText.value ? Icons.visibility : Icons.visibility_off,
+                              ),
+                              onPressed: () => controller.isObscureText.value = !controller.isObscureText.value,
+                            ),
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -54,7 +65,9 @@ class LoginScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           textStyle: const TextStyle(),
                         ),
-                        onPressed: () => Get.offAllNamed(HomeScreen.route),
+                        onPressed: controller.login,
+
+                        // onPressed: () => Get.offAllNamed(HomeScreen.route),
                         child: const Text('ENTRAR'),
                       ),
                     ],
