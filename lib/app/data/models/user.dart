@@ -2,28 +2,36 @@
 
 class User {
   late String id;
+  late String username;
   late String email;
-  late String name;
+  late String jwt;
 
   User(
     this.id,
+    this.username,
     this.email,
-    this.name,
+    this.jwt,
   );
 
   User.fromJson(Map<String, dynamic> json)
-      : id = json['id'].toString() == 'null' ? '' : json['id'],
-        email = json['email'].toString() == 'null' ? '' : json['email'],
-        name = json['name'].toString() == 'null' ? '' : json['name'];
+      : id = json['user']['id'].toString() == 'null' ? '' : json['user']['id'],
+        username = json['user']['username'].toString() == 'null'
+            ? ''
+            : json['user']['username'],
+        email = json['user']['email'].toString() == 'null'
+            ? ''
+            : json['user']['email'],
+        jwt = json['jwt'].toString() == 'null' ? '' : json['jwt'];
 
   Map<String, dynamic> toJson() => {
         'id': id,
+        'name': username,
         'email': email,
-        'name': name,
+        'jwt': jwt,
       };
 
   @override
   String toString() {
-    return 'User{id: $id, email: $email, name: $name}';
+    return 'User{id: $id, username: $username, email: $email, jwt: $jwt}';
   }
 }
