@@ -9,6 +9,7 @@ class WaterSavingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: _myAppBar(context),
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
@@ -16,40 +17,40 @@ class WaterSavingsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(
-              height: 60,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                IconButton(
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    color: Color.fromARGB(255, 65, 112, 110),
-                  ),
-                  onPressed: () => Get.back(),
-                ),
-                const Text(
-                  'VOLTAR',
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 65, 112, 110),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                  ),
-                  textAlign: TextAlign.start,
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 24,
-            ),
+            // const SizedBox(
+            //   height: 60,
+            // ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   crossAxisAlignment: CrossAxisAlignment.center,
+            //   children: [
+            //     IconButton(
+            //       icon: const Icon(
+            //         Icons.arrow_back,
+            //         color: Color.fromARGB(255, 65, 112, 110),
+            //       ),
+            //       onPressed: () => Get.back(),
+            //     ),
+            //     const Text(
+            //       'VOLTAR',
+            //       style: TextStyle(
+            //         color: Color.fromARGB(255, 65, 112, 110),
+            //         fontSize: 14,
+            //         fontWeight: FontWeight.w700,
+            //       ),
+            //       textAlign: TextAlign.start,
+            //     ),
+            //   ],
+            // ),
+            // const SizedBox(
+            //   height: 24,
+            // ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 67),
               child: Image.asset('assets/images/water_savings.jpg'),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 48),
+              padding: const EdgeInsets.only(right: 48, left: 48, bottom: 24),
               child: Column(
                 children: const [
                   Text(
@@ -113,6 +114,38 @@ class WaterSavingsScreen extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  AppBar? _myAppBar(BuildContext context) {
+    return
+        //  MediaQuery.of(context).size.width >= 720
+        //     ? null
+        //     :
+        AppBar(
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      elevation: 0,
+      leadingWidth: 112,
+      leading: Padding(
+        padding: const EdgeInsets.only(left: 8.0, top: 8),
+        child: GestureDetector(
+          onTap: Get.back,
+          child: Row(
+            children: const [
+              Icon(
+                Icons.arrow_back,
+                size: 24,
+                color: Color.fromARGB(255, 65, 112, 110),
+              ),
+              SizedBox(width: 6),
+              Text(
+                'Voltar',
+                style: TextStyle(color: Color.fromARGB(255, 65, 112, 110), fontWeight: FontWeight.w500, letterSpacing: 1.1),
+              )
+            ],
+          ),
         ),
       ),
     );
