@@ -48,6 +48,8 @@ class HomeController extends GetxController {
   }
 
   void calcular() async {
+    Get.focusScope?.unfocus();
+
     if (vazaoController.text.isEmpty ||
         tempoPlantacaoController.text.isEmpty ||
         hectaresController.text.isEmpty ||
