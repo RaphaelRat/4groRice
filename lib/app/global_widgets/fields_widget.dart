@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'responsive_container.dart';
 
 Widget fieldsWidget({
-   Estimativa? estimativa,
+  Estimativa? estimativa,
   bool hasDivider = true,
 }) {
   final hectares = estimativa?.hectares;
@@ -12,36 +12,28 @@ Widget fieldsWidget({
   final regiao = estimativa?.regiao;
   final vazao = estimativa?.vazao;
   final preparacaoSolo = estimativa?.preparacaoSolo;
-  final gastoDeAgua = estimativa?.gastoDeAgua;
+  double? gastoDeAgua = estimativa?.gastoDeAgua;
+  if (gastoDeAgua != null) {
+    gastoDeAgua /= 1000;
+  }
   return responsiveContainer(
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 11),
       child: Column(
         children: [
           rowOfFields(
-            left:
-                columnOfFields(field: 'Hectares', value: '${hectares ?? '?'}'),
-            right: columnOfFields(
-                field: 'Tempo de plantação',
-                value: '${tempoPlantacao ?? '?'} Dias'),
+            left: columnOfFields(field: 'Hectares', value: '${hectares ?? '?'}'),
+            right: columnOfFields(field: 'Tempo de plantação', value: '${tempoPlantacao ?? '?'} Dias'),
           ),
           const SizedBox(height: 22),
           rowOfFields(
             left: columnOfFields(field: 'Região', value: regiao ?? '?'),
-            right:
-                columnOfFields(field: 'Vazão', value: '${vazao ?? '?'} Litros'),
+            right: columnOfFields(field: 'Vazão', value: '${vazao ?? '?'} Litros'),
           ),
           const SizedBox(height: 22),
           rowOfFields(
-            left: columnOfFields(
-                field: 'Preparação do Solo',
-                value: preparacaoSolo != 0
-                    ? '${tempoPlantacao ?? '?'} Dias'
-                    : 'Não'),
-            right: columnOfFields(
-                field: 'Gasto de água',
-                value: '${gastoDeAgua ?? '?'} mil litros',
-                color: const Color.fromARGB(255, 65, 112, 110)),
+            left: columnOfFields(field: 'Preparação do Solo', value: preparacaoSolo != 0 ? '${tempoPlantacao ?? '?'} Dias' : 'Não'),
+            right: columnOfFields(field: 'Gasto de água', value: '${gastoDeAgua ?? '?'} m³', color: const Color.fromARGB(255, 65, 112, 110)),
           ),
           hasDivider ? const SizedBox(height: 22) : Container(),
           hasDivider ? const Divider(color: Color.fromARGB(255, 212, 232, 231), thickness: 1) : Container(),
