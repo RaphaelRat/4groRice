@@ -1,11 +1,11 @@
+import 'package:agrorice/app/modules/home/home/home_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-import './estimation_controller.dart';
 import '../../estimate_result/estimate_result.dart';
 import '../../../global_widgets/global_widgets.dart';
 
-class EstimationPage extends GetView<EstimationController> {
+class EstimationPage extends GetView<HomeController> {
   static const route = '/estimation';
 
   const EstimationPage({Key? key}) : super(key: key);

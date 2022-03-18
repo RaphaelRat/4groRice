@@ -1,11 +1,11 @@
+import 'package:agrorice/app/modules/home/home/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import './profile_controller.dart';
 import '../../login/login.dart';
 import '../../../global_widgets/global_widgets.dart';
 
-class ProfilePage extends GetView<ProfileController> {
+class ProfilePage extends GetView<HomeController> {
   static const route = '/profile';
 
   const ProfilePage({Key? key}) : super(key: key);
