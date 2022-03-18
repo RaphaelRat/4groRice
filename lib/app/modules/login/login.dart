@@ -33,6 +33,7 @@ class LoginScreen extends GetView<LoginController> {
                   child: Column(
                     children: [
                       TextField(
+                        keyboardType: TextInputType.emailAddress,
                         controller: controller.emailController,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
@@ -44,6 +45,7 @@ class LoginScreen extends GetView<LoginController> {
                       ),
                       Obx(
                         () => TextField(
+                          keyboardType: TextInputType.visiblePassword,
                           controller: controller.senhaController,
                           obscureText: controller.isObscureText.value,
                           decoration: InputDecoration(
