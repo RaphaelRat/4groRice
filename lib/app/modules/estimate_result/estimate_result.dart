@@ -77,7 +77,7 @@ class EstimateResultScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, top: 8),
                 child: GestureDetector(
-                  onTap: () => Get.previousRoute == HomeScreen.route ? Get.back() : Get.offAndToNamed(HomeScreen.route),
+                  onTap: () => Get.back(),
                   child: Row(
                     children: const [
                       Icon(
@@ -160,7 +160,7 @@ class EstimateResultScreen extends StatelessWidget {
             leading: Padding(
               padding: const EdgeInsets.only(left: 8.0, top: 8),
               child: GestureDetector(
-                onTap: () => Get.previousRoute == HomeScreen.route ? Get.back() : Get.offAndToNamed(HomeScreen.route),
+                onTap: () => Get.back(),
                 child: Row(
                   children: const [
                     Icon(
