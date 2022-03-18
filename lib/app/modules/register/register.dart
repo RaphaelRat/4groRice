@@ -45,6 +45,7 @@ class RegisterScreen extends GetView<RegisterController> {
                         height: 12,
                       ),
                       TextField(
+                        keyboardType: TextInputType.emailAddress,
                         controller: controller.emailController,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
@@ -57,6 +58,7 @@ class RegisterScreen extends GetView<RegisterController> {
                       Obx(
                         () => TextField(
                           controller: controller.senha1Controller,
+                          keyboardType: TextInputType.visiblePassword,
                           obscureText: controller.isObscureText.value,
                           decoration: InputDecoration(
                             border: const OutlineInputBorder(),
@@ -74,6 +76,7 @@ class RegisterScreen extends GetView<RegisterController> {
                         height: 12,
                       ),
                       TextField(
+                        keyboardType: TextInputType.visiblePassword,
                         controller: controller.senha2Controller,
                         obscureText: true,
                         decoration: const InputDecoration(
