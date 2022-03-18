@@ -9,7 +9,8 @@ class Estimativa {
   late double gastoDeAgua;
   late double volume;
 
-  Estimativa(this.hectares, this.tempoPlantacao, this.regiao, this.vazao, this.preparacaoSolo, this.gastoDeAgua, this.volume);
+  Estimativa(this.hectares, this.tempoPlantacao, this.regiao, this.vazao,
+      this.preparacaoSolo, this.gastoDeAgua, this.volume);
 
   Estimativa.fromString(Map<String, dynamic> json)
       : hectares = double.parse(json['hectares'].toString()),
@@ -21,13 +22,26 @@ class Estimativa {
         volume = double.parse(json['volume'].toString());
 
   Estimativa.fromJson(Map<String, dynamic> json)
-      : hectares = json['Hectares'].toString() == 'null' ? '' : json['Hectares'],
-        tempoPlantacao = json['Tempo_de_plantacao'].toString() == 'null' ? '' : json['Tempo_de_plantacao'],
-        regiao = json['Regiao'].toString() == 'null' ? '' : json['Regiao'].toString(),
-        vazao = json['Vazao'].toString() == 'null' ? '' : json['Vazao'],
-        preparacaoSolo = json['Preparacao_do_solo'].toString() == 'null' ? '' : json['Preparacao_do_solo'],
-        gastoDeAgua = json['Gasto_de_agua'].toString() == 'null' ? '' : json['Gasto_de_agua'],
-        volume = json['Volume'].toString() == 'null' ? '' : json['Volume'];
+      : hectares = json['Hectares'].toString() == 'null'
+            ? ''
+            : json['Hectares'].toDouble(),
+        tempoPlantacao = json['Tempo_de_plantacao'].toString() == 'null'
+            ? ''
+            : json['Tempo_de_plantacao'],
+        regiao = json['Regiao'].toString() == 'null'
+            ? ''
+            : json['Regiao'].toString(),
+        vazao =
+            json['Vazao'].toString() == 'null' ? '' : json['Vazao'].toDouble(),
+        preparacaoSolo = json['Preparacao_do_solo'].toString() == 'null'
+            ? ''
+            : json['Preparacao_do_solo'],
+        gastoDeAgua = json['Gasto_de_agua'].toString() == 'null'
+            ? ''
+            : json['Gasto_de_agua'].toDouble(),
+        volume = json['Volume'].toString() == 'null'
+            ? ''
+            : json['Volume'].toDouble();
 
   Map<String, dynamic> toJson() => {
         'hectares': hectares,
@@ -40,7 +54,11 @@ class Estimativa {
       };
 
   static double calculaGasto(
-      {required String regiao, required double vazao, int preparacaoSolo = 0, required int tempoPlantacao, required double hectares}) {
+      {required String regiao,
+      required double vazao,
+      int preparacaoSolo = 0,
+      required int tempoPlantacao,
+      required double hectares}) {
     double valorInicial = 0;
     double valorFinal = 0;
 
@@ -65,7 +83,8 @@ class Estimativa {
 
     double evapotranspiracao = (valorInicial + valorFinal) / 2;
     double perdaDeAguaPorDia = evapotranspiracao + vazao;
-    double gastoDeAguaTotalParaCm2 = perdaDeAguaPorDia * (preparacaoSolo + tempoPlantacao);
+    double gastoDeAguaTotalParaCm2 =
+        perdaDeAguaPorDia * (preparacaoSolo + tempoPlantacao);
     double gastoDeAguaTotal = gastoDeAguaTotalParaCm2 * 10000 * hectares;
     return gastoDeAguaTotal;
   }
