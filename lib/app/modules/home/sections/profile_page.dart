@@ -25,22 +25,12 @@ class ProfilePage extends GetView<HomeController> {
                     padding: EdgeInsets.fromLTRB(24, 36, 24, 6),
                     child: Text('Nome:'),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
-                    child: Text('Sobrenome'),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
-                    child: TextField(
-                      decoration: InputDecoration(
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
+                    child: TextFormField(
+                      initialValue: controller.nome ?? 'Usuário sem nome!',
+                      enabled: false,
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                       ),
                     ),
@@ -49,36 +39,32 @@ class ProfilePage extends GetView<HomeController> {
                     padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
                     child: Text('Email'),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
-                    child: TextField(
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
+                    child: TextFormField(
+                      enabled: false,
+                      initialValue: controller.email ?? 'Usuário sem email!',
                       keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                       ),
                     ),
                   ),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
-                    child: Text('Senha:'),
+                    child: Text('Quantidade de cálculos:'),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(24, 6, 24, 48),
-                    child: Obx(
-                      () => TextField(
-                        obscureText: controller.isObscureText.value,
-                        decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              controller.isObscureText.value ? Icons.visibility : Icons.visibility_off,
-                            ),
-                            onPressed: () => controller.isObscureText.value = !controller.isObscureText.value,
-                          ),
-                        ),
+                    padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
+                    child: TextFormField(
+                      enabled: false,
+                      initialValue: controller.estimativas?.length.toString() ?? 'Sem cálculos registrados!',
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        border: const OutlineInputBorder(),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -93,24 +79,11 @@ class ProfilePage extends GetView<HomeController> {
       children: [
         Expanded(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
-              CircleAvatar(
-                backgroundColor: Color.fromARGB(255, 65, 112, 110),
-                radius: 33,
-                child: CircleAvatar(
-                  radius: 31,
-                  backgroundColor: Colors.white,
-                  child: CircleAvatar(
-                    radius: 30,
-                    backgroundImage: AssetImage('assets/images/igor_picture.jpg'),
-                  ),
-                ),
-              ),
-              SizedBox(width: 16),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
               Text(
-                'Igor Enrick',
-                style: TextStyle(
+                'Bem vindo(a) ao seu perfil, ${controller.nome ?? 'Usuário sem nome'}',
+                style: const TextStyle(
                   color: Color.fromARGB(255, 65, 112, 110),
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
