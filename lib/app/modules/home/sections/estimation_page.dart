@@ -78,28 +78,26 @@ class EstimationPage extends GetView<HomeController> {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
-                    child: DropdownButton<String>(
-                      value: controller.dropdownValue,
-                      elevation: 16,
-                      style: const TextStyle(color: Colors.teal),
-                      underline: Container(
-                        height: 2,
-                        color: Colors.teal,
+                    child: Obx(
+                      () => DropdownButton<String>(
+                        value: controller.dropdownValue.value,
+                        elevation: 16,
+                        style: const TextStyle(color: Colors.teal),
+                        underline: Container(
+                          height: 2,
+                          color: Colors.teal,
+                        ),
+                        onChanged: (String? newValue) {
+                          controller.alteraRegiao(newValue!);
+                        },
+                        items: <String>['Sul', 'Rio Grande do Sul', 'Trópicos (Estação Seca)', 'Trópicos (Estação Chuvosa)']
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
                       ),
-                      onChanged: (String? newValue) {
-                        controller.alteraRegiao(newValue!);
-                      },
-                      items: <String>[
-                        'Sul',
-                        'Rio Grande do Sul',
-                        'Trópicos (Estação Seca)',
-                        'Trópicos (Estação Chuvosa)'
-                      ].map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
                     ),
                   ),
                   Padding(
@@ -108,12 +106,8 @@ class EstimationPage extends GetView<HomeController> {
                       () => Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(
-                              'Preparação do solo? ${controller.solo.value ? 'Sim' : 'Não'}'),
-                          Switch(
-                              value: controller.solo.value,
-                              onChanged: (value) =>
-                                  controller.solo.value = value),
+                          Text('Preparação do solo? ${controller.solo.value ? 'Sim' : 'Não'}'),
+                          Switch(value: controller.solo.value, onChanged: (value) => controller.solo.value = value),
                         ],
                       ),
                     ),
@@ -129,11 +123,9 @@ class EstimationPage extends GetView<HomeController> {
                                 child: Text('Tempo de Preparação (em dias):'),
                               ),
                               Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(24, 6, 24, 12),
+                                padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
                                 child: TextField(
-                                  controller:
-                                      controller.tempoPreparacaoController,
+                                  controller: controller.tempoPreparacaoController,
                                   decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     labelText: 'Preparação',
