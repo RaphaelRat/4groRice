@@ -39,7 +39,7 @@ class Estimativa {
         'volume': volume,
       };
 
-  double calculaGasto(
+  static double calculaGasto(
       {required String regiao, required double vazao, int preparacaoSolo = 0, required int tempoPlantacao, required double hectares}) {
     double valorInicial = 0;
     double valorFinal = 0;
