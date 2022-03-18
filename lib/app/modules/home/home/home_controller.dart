@@ -13,11 +13,16 @@ class HomeController extends GetxController {
 
   @override
   Future<void> onInit() async {
+    refreshField();
+    super.onInit();
+  }
+
+  void refreshField() async {
+    isEstimativasLoading.value = true;
     nome = await UserSecureStorage.getUsername();
     email = await UserSecureStorage.getEmail();
     _token = await UserSecureStorage.getjwt();
     estimativas = await UserSecureStorage.getEstimates();
     isEstimativasLoading.value = false;
-    super.onInit();
   }
 }
