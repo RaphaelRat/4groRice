@@ -58,8 +58,7 @@ class ProfilePage extends GetView<HomeController> {
                     padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
                     child: TextFormField(
                       enabled: false,
-                      initialValue: controller.estimativas?.length.toString() ??
-                          'Sem cálculos registrados!',
+                      initialValue: controller.estimativas?.length.toString() ?? 'Sem cálculos registrados!',
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                         border: const OutlineInputBorder(),
@@ -80,7 +79,7 @@ class ProfilePage extends GetView<HomeController> {
       children: [
         Expanded(
           child: Text(
-            'Bem vindo(a) ao seu perfil, ${controller.nome ?? 'Usuário sem nome'}',
+            'Bem vindo(a) ao seu perfil,\n${controller.nome ?? 'Usuário sem nome'}',
             style: const TextStyle(
               color: Color.fromARGB(255, 65, 112, 110),
               fontSize: 18,
