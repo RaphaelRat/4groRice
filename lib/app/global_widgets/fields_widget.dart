@@ -1,16 +1,18 @@
+import 'package:agrorice/app/data/models/estimate.dart';
 import 'package:flutter/material.dart';
 
 import 'responsive_container.dart';
 
 Widget fieldsWidget({
-  double? hectares,
-  int? tempoPlantacao,
-  String? regiao,
-  int? vazao,
-  int? preparacaoSolo,
-  double? gastoDeAgua,
+   Estimativa? estimativa,
   bool hasDivider = true,
 }) {
+  final hectares = estimativa?.hectares;
+  final tempoPlantacao = estimativa?.tempoPlantacao;
+  final regiao = estimativa?.regiao;
+  final vazao = estimativa?.vazao;
+  final preparacaoSolo = estimativa?.preparacaoSolo;
+  final gastoDeAgua = estimativa?.gastoDeAgua;
   return responsiveContainer(
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 11),
@@ -42,18 +44,14 @@ Widget fieldsWidget({
                 color: const Color.fromARGB(255, 65, 112, 110)),
           ),
           hasDivider ? const SizedBox(height: 22) : Container(),
-          hasDivider
-              ? const Divider(
-                  color: Color.fromARGB(255, 212, 232, 231), thickness: 1)
-              : Container(),
+          hasDivider ? const Divider(color: Color.fromARGB(255, 212, 232, 231), thickness: 1) : Container(),
         ],
       ),
     ),
   );
 }
 
-Widget columnOfFields(
-    {required String field, required String value, Color? color}) {
+Widget columnOfFields({required String field, required String value, Color? color}) {
   return Expanded(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,

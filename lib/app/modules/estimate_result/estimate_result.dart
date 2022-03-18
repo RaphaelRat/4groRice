@@ -36,7 +36,7 @@ class EstimateResultScreen extends StatelessWidget {
                 ),
               ),
               _cardBox(),
-              fieldsWidget(hasDivider: false, hectares: 5, tempoPlantacao: 90, regiao: 'Sul', vazao: 95, preparacaoSolo: 3, gastoDeAgua: 300),
+              // fieldsWidget(hasDivider: false, hectares: 5, tempoPlantacao: 90, regiao: 'Sul', vazao: 95, preparacaoSolo: 3, gastoDeAgua: 300),
               const Padding(
                 padding: EdgeInsets.only(left: 12, right: 12, top: 20),
                 child: Text(

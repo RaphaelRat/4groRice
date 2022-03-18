@@ -9,6 +9,7 @@ class HomeController extends GetxController {
   String? email;
   String? _token;
   List<Estimativa>? estimativas;
+  final isEstimativasLoading = true.obs;
 
   @override
   Future<void> onInit() async {
@@ -16,6 +17,7 @@ class HomeController extends GetxController {
     email = await UserSecureStorage.getEmail();
     _token = await UserSecureStorage.getjwt();
     estimativas = await UserSecureStorage.getEstimates();
+    isEstimativasLoading.value = false;
     super.onInit();
   }
 }
