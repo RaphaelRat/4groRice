@@ -1,3 +1,4 @@
+import 'package:agrorice/app/data/models/estimate.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +8,9 @@ import '../../global_widgets/global_widgets.dart';
 
 class EstimateResultScreen extends StatelessWidget {
   static const route = '/estimate_result';
-  const EstimateResultScreen({Key? key}) : super(key: key);
+  final Estimativa? estimativa;
+
+  const EstimateResultScreen({Key? key, this.estimativa}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +39,7 @@ class EstimateResultScreen extends StatelessWidget {
                 ),
               ),
               _cardBox(),
-              // fieldsWidget(hasDivider: false, hectares: 5, tempoPlantacao: 90, regiao: 'Sul', vazao: 95, preparacaoSolo: 3, gastoDeAgua: 300),
+              fieldsWidget(hasDivider: false, estimativa: estimativa),
               const Padding(
                 padding: EdgeInsets.only(left: 12, right: 12, top: 20),
                 child: Text(
@@ -100,6 +103,10 @@ class EstimateResultScreen extends StatelessWidget {
   }
 
   Widget _cardBox() {
+    double gasto = 0;
+    if (estimativa?.gastoDeAgua != 0) {
+      gasto = estimativa!.gastoDeAgua / 1000;
+    }
     return responsiveContainer(
       child: Container(
         margin: const EdgeInsets.fromLTRB(24, 0, 24, 12),
@@ -110,11 +117,11 @@ class EstimateResultScreen extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const Center(
+            Center(
               child: Text(
-                'Você gastará 300 mil litros de água',
+                'Você gastará ${gasto.toStringAsFixed(2)} m³ de água',
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Color.fromARGB(255, 43, 70, 139),
                   fontSize: 34,
                   fontWeight: FontWeight.w600,

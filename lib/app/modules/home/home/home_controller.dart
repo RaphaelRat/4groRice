@@ -99,6 +99,6 @@ class HomeController extends GetxController {
     tempoPreparacaoController.clear();
 
     refreshField();
-    Get.toNamed(EstimateResultScreen.route);
+    Get.to(EstimateResultScreen(estimativa: estimativa));
   }
 }

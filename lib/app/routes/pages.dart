@@ -21,7 +21,7 @@ List<GetPage> getAppPages() {
     GetPage(name: EstimationPage.route, page: () => const EstimationPage()),
     GetPage(name: PlantationSection.route, page: () => const PlantationSection()),
     GetPage(name: ProfilePage.route, page: () => const ProfilePage()),
-    GetPage(name: EstimateResultScreen.route, page: () => const EstimateResultScreen()),
+    GetPage(name: EstimateResultScreen.route, page: () => EstimateResultScreen()),
     GetPage(name: WaterQualityScreen.route, page: () => const WaterQualityScreen(), transition: Transition.circularReveal),
     GetPage(name: WaterSavingsScreen.route, page: () => const WaterSavingsScreen()),
   ];

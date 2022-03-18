@@ -33,7 +33,8 @@ Widget fieldsWidget({
           const SizedBox(height: 22),
           rowOfFields(
             left: columnOfFields(field: 'Preparação do Solo', value: preparacaoSolo != 0 ? '${tempoPlantacao ?? '?'} Dias' : 'Não'),
-            right: columnOfFields(field: 'Gasto de água', value: '${gastoDeAgua ?? '?'} m³', color: const Color.fromARGB(255, 65, 112, 110)),
+            right: columnOfFields(
+                field: 'Gasto de água', value: '${gastoDeAgua?.toStringAsFixed(2) ?? '?'} m³', color: const Color.fromARGB(255, 65, 112, 110)),
           ),
           hasDivider ? const SizedBox(height: 22) : Container(),
           hasDivider ? const Divider(color: Color.fromARGB(255, 212, 232, 231), thickness: 1) : Container(),
