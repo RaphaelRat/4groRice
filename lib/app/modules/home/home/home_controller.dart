@@ -51,7 +51,7 @@ class HomeController extends GetxController {
     if (vazaoController.text.isEmpty ||
         tempoPlantacaoController.text.isEmpty ||
         hectaresController.text.isEmpty ||
-        dropdownValue.isEmpty ||
+        dropdownValue.value.isEmpty ||
         (solo.value && tempoPreparacaoController.text.isEmpty)) {
       Get.defaultDialog(title: 'Erro', middleText: 'Preencha todos os campos!');
       return;
