@@ -1,41 +1,17 @@
+import 'package:agrorice/app/modules/home/home/home_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 import '../../water_quality/water_quality.dart';
 import '../../../global_widgets/global_widgets.dart';
 
-class PlantationSection extends StatelessWidget {
+class PlantationSection extends GetView<HomeController> {
   static const route = '/plantation';
 
   const PlantationSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _fields = [
-      fieldsWidget(),
-      fieldsWidget(
-          hectares: 5,
-          tempoPlantacao: 90,
-          regiao: 'Sul',
-          vazao: 95,
-          preparacaoSolo: 1,
-          gastoDeAgua: 300),
-      fieldsWidget(
-          hectares: 65,
-          tempoPlantacao: 120,
-          regiao: 'Norte',
-          vazao: 150,
-          preparacaoSolo: 0,
-          gastoDeAgua: 100),
-      fieldsWidget(
-          hectares: 2,
-          tempoPlantacao: 45,
-          regiao: 'Sudeste',
-          vazao: 32,
-          preparacaoSolo: 12,
-          gastoDeAgua: 47),
-    ];
-
     return Column(
       children: [
         appBarWidget(
@@ -49,13 +25,35 @@ class PlantationSection extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(
-          child: ListView(
-            children: [
-              _cardBox(context),
-              ..._fields,
-            ],
-          ),
+        Obx(() => controller.hideCard.value ? Container() : _cardBox(context)),
+        Obx(
+          () => controller.isEstimativasLoading.value
+              ? const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: CircularProgressIndicator(),
+                )
+              : Expanded(
+                  child: ListView.builder(
+                    itemCount: controller.estimativas?.length ?? 0,
+                    itemBuilder: (context, index) {
+                      return index == 0
+                          ? Column(
+                              children: [
+                                _cardBox(context),
+                                const SizedBox(height: 8),
+                                fieldsWidget(
+                                  estimativa: controller.estimativas?.elementAt(index),
+                                  hasDivider: controller.estimativas?.length == index + 1 ? false : true,
+                                )
+                              ],
+                            )
+                          : fieldsWidget(
+                              estimativa: controller.estimativas?.elementAt(index),
+                              hasDivider: controller.estimativas?.length == index + 1 ? false : true,
+                            );
+                    },
+                  ),
+                ),
         ),
       ],
     );

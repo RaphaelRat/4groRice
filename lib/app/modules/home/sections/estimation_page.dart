@@ -1,11 +1,10 @@
+import 'package:agrorice/app/modules/home/home/home_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-import './estimation_controller.dart';
-import '../../estimate_result/estimate_result.dart';
 import '../../../global_widgets/global_widgets.dart';
 
-class EstimationPage extends GetView<EstimationController> {
+class EstimationPage extends GetView<HomeController> {
   static const route = '/estimation';
 
   const EstimationPage({Key? key}) : super(key: key);
@@ -35,10 +34,11 @@ class EstimationPage extends GetView<EstimationController> {
                     padding: EdgeInsets.fromLTRB(24, 36, 24, 6),
                     child: Text('Vazão da Taipa:'),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
                     child: TextField(
-                      decoration: InputDecoration(
+                      controller: controller.vazaoController,
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Vazão',
                       ),
@@ -48,10 +48,11 @@ class EstimationPage extends GetView<EstimationController> {
                     padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
                     child: Text('Tempo de Plantação (em dias):'),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
                     child: TextField(
-                      decoration: InputDecoration(
+                      controller: controller.tempoPlantacaoController,
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Plantação',
                       ),
@@ -61,10 +62,11 @@ class EstimationPage extends GetView<EstimationController> {
                     padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
                     child: Text('Hectares:'),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
                     child: TextField(
-                      decoration: InputDecoration(
+                      controller: controller.hectaresController,
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Hectares',
                       ),
@@ -74,10 +76,11 @@ class EstimationPage extends GetView<EstimationController> {
                     padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
                     child: Text('Região:'),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
                     child: TextField(
-                      decoration: InputDecoration(
+                      controller: controller.regiaoController,
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Região',
                       ),
@@ -100,15 +103,16 @@ class EstimationPage extends GetView<EstimationController> {
                         ? Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Padding(
+                            children: [
+                              const Padding(
                                 padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
                                 child: Text('Tempo de Preparação (em dias):'),
                               ),
                               Padding(
-                                padding: EdgeInsets.fromLTRB(24, 6, 24, 12),
+                                padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
                                 child: TextField(
-                                  decoration: InputDecoration(
+                                  controller: controller.tempoPreparacaoController,
+                                  decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     labelText: 'Preparação',
                                   ),
@@ -125,7 +129,7 @@ class EstimationPage extends GetView<EstimationController> {
                         style: ElevatedButton.styleFrom(
                           textStyle: const TextStyle(),
                         ),
-                        onPressed: () => Get.toNamed(EstimateResultScreen.route),
+                        onPressed: controller.calcular,
                         child: const Text('CALCULAR O USO DA ÁGUA'),
                       ),
                     ),
