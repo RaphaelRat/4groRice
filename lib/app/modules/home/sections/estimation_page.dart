@@ -1,4 +1,5 @@
 import 'package:agrorice/app/modules/home/home/home_controller.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -37,6 +38,7 @@ class EstimationPage extends GetView<HomeController> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
                     child: TextField(
+                      keyboardType: TextInputType.number,
                       controller: controller.vazaoController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -51,6 +53,7 @@ class EstimationPage extends GetView<HomeController> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
                     child: TextField(
+                      keyboardType: TextInputType.number,
                       controller: controller.tempoPlantacaoController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -65,6 +68,7 @@ class EstimationPage extends GetView<HomeController> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
                     child: TextField(
+                      keyboardType: TextInputType.number,
                       controller: controller.hectaresController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -125,6 +129,7 @@ class EstimationPage extends GetView<HomeController> {
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
                                 child: TextField(
+                                  keyboardType: TextInputType.number,
                                   controller: controller.tempoPreparacaoController,
                                   decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
