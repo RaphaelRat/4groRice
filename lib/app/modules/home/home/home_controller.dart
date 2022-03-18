@@ -92,6 +92,12 @@ class HomeController extends GetxController {
     final estimativa = Estimativa(hectares, tempoPlantacao, regiao, vazao, preparacaoSolo, gasto, 0);
     await UserSecureStorage.addEstimates(estimativa);
 
+    vazaoController.clear();
+    tempoPlantacaoController.clear();
+    hectaresController.clear();
+    regiaoController.clear();
+    tempoPreparacaoController.clear();
+
     refreshField();
     Get.toNamed(EstimateResultScreen.route);
   }
