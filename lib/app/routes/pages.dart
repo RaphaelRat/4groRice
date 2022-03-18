@@ -15,14 +15,31 @@ import '../modules/register/register.dart';
 
 List<GetPage> getAppPages() {
   return [
-    GetPage(name: HomeScreen.route, page: () => const HomeScreen(), binding: BindingsBuilder(() => Get.lazyPut(() => HomeController()))),
-    GetPage(name: LoginScreen.route, page: () => const LoginScreen(), binding: BindingsBuilder(() => Get.lazyPut(() => LoginController()))),
-    GetPage(name: RegisterScreen.route, page: () => RegisterScreen(), binding: BindingsBuilder(() => Get.lazyPut(() => RegisterController()))),
+    GetPage(
+        name: HomeScreen.route,
+        page: () => const HomeScreen(),
+        binding: BindingsBuilder(() => Get.lazyPut(() => HomeController()))),
+    GetPage(
+        name: LoginScreen.route,
+        page: () => const LoginScreen(),
+        binding: BindingsBuilder(() => Get.lazyPut(() => LoginController()))),
+    GetPage(
+        name: RegisterScreen.route,
+        page: () => RegisterScreen(),
+        binding:
+            BindingsBuilder(() => Get.lazyPut(() => RegisterController()))),
     GetPage(name: EstimationPage.route, page: () => const EstimationPage()),
-    GetPage(name: PlantationSection.route, page: () => const PlantationSection()),
+    GetPage(
+        name: PlantationSection.route, page: () => const PlantationSection()),
     GetPage(name: ProfilePage.route, page: () => const ProfilePage()),
-    GetPage(name: EstimateResultScreen.route, page: () => EstimateResultScreen()),
-    GetPage(name: WaterQualityScreen.route, page: () => const WaterQualityScreen(), transition: Transition.circularReveal),
-    GetPage(name: WaterSavingsScreen.route, page: () => const WaterSavingsScreen()),
+    GetPage(
+        name: EstimateResultScreen.route,
+        page: () => const EstimateResultScreen()),
+    GetPage(
+        name: WaterQualityScreen.route,
+        page: () => const WaterQualityScreen(),
+        transition: Transition.circularReveal),
+    GetPage(
+        name: WaterSavingsScreen.route, page: () => const WaterSavingsScreen()),
   ];
 }

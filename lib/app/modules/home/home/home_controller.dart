@@ -20,8 +20,13 @@ class HomeController extends GetxController {
   final vazaoController = TextEditingController();
   final tempoPlantacaoController = TextEditingController();
   final hectaresController = TextEditingController();
-  final regiaoController = TextEditingController();
   final tempoPreparacaoController = TextEditingController();
+
+  String dropdownValue = 'Sul';
+
+  void alteraRegiao(String regiao) {
+    dropdownValue = regiao;
+  }
 
   final webClient = WebClient();
 
@@ -46,7 +51,7 @@ class HomeController extends GetxController {
     if (vazaoController.text.isEmpty ||
         tempoPlantacaoController.text.isEmpty ||
         hectaresController.text.isEmpty ||
-        regiaoController.text.isEmpty ||
+        dropdownValue.isEmpty ||
         (solo.value && tempoPreparacaoController.text.isEmpty)) {
       Get.defaultDialog(title: 'Erro', middleText: 'Preencha todos os campos!');
       return;
@@ -59,15 +64,21 @@ class HomeController extends GetxController {
     try {
       hectares = double.parse(hectaresController.text);
       tempoPlantacao = int.parse(tempoPlantacaoController.text);
-      regiao = regiaoController.text;
+      regiao = dropdownValue;
       vazao = double.parse(vazaoController.text);
-      preparacaoSolo = solo.value ? int.parse(tempoPreparacaoController.text) : 0;
+      preparacaoSolo =
+          solo.value ? int.parse(tempoPreparacaoController.text) : 0;
     } catch (e) {
-      Get.defaultDialog(title: 'Erro', middleText: 'Algum campo está inválido!');
+      Get.defaultDialog(
+          title: 'Erro', middleText: 'Algum campo está inválido!');
       return;
     }
 
-    final gasto = Estimativa.calculaGasto(regiao: regiao, vazao: vazao, tempoPlantacao: tempoPlantacao, hectares: hectares);
+    final gasto = Estimativa.calculaGasto(
+        regiao: regiao,
+        vazao: vazao,
+        tempoPlantacao: tempoPlantacao,
+        hectares: hectares);
 
     try {
       // final response = await webClient.postLoginUser(emailController.text, senhaController.text);
@@ -86,17 +97,18 @@ class HomeController extends GetxController {
 
     } catch (e) {
       print('\nERRO\n$e');
-      Get.defaultDialog(title: 'Erro', middleText: 'Erro ao enviar para o servidor');
+      Get.defaultDialog(
+          title: 'Erro', middleText: 'Erro ao enviar para o servidor');
       return;
     }
 
-    final estimativa = Estimativa(hectares, tempoPlantacao, regiao, vazao, preparacaoSolo, gasto, 0);
+    final estimativa = Estimativa(
+        hectares, tempoPlantacao, regiao, vazao, preparacaoSolo, gasto, 0);
     await UserSecureStorage.addEstimates(estimativa);
 
     vazaoController.clear();
     tempoPlantacaoController.clear();
     hectaresController.clear();
-    regiaoController.clear();
     tempoPreparacaoController.clear();
 
     refreshField();
