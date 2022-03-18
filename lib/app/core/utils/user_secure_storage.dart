@@ -40,6 +40,13 @@ class UserSecureStorage {
   static Future<List<Estimativa>?> getEstimates() async {
     final value = await _storage.read(key: _keyEstimates);
 
-    return value == null ? null : List<Estimativa>.from(json.decode(value));
+    final estimaties = List<Map<String, dynamic>>.from(json.decode(value ?? ''));
+    List<Estimativa> lista = [];
+    for (var estimatie in estimaties) {
+      final teste = Estimativa.fromString(estimatie);
+      lista.add(teste);
+    }
+
+    return value == null ? null : lista;
   }
 }

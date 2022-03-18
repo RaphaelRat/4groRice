@@ -1,4 +1,6 @@
+import 'package:agrorice/app/core/utils/user_secure_storage.dart';
 import 'package:agrorice/app/data/providers/web_client/web_client.dart';
+import 'package:agrorice/app/modules/home/home/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +23,17 @@ class RegisterController extends GetxController {
       return;
     }
     try {
-      await webClient.postRegisterUser(nomeController.text, emailController.text, senha1Controller.text);
+      final response = await webClient.postRegisterUser(nomeController.text, emailController.text, senha1Controller.text);
+
+      final jwt = response.jwt;
+      final username = response.username;
+      final email = response.email;
+      final estimates = await webClient.getEstimativasUsuario(jwt);
+      await UserSecureStorage.setjwt(jwt);
+      await UserSecureStorage.setUsername(username);
+      await UserSecureStorage.setEmail(email);
+      await UserSecureStorage.setEstimates(estimates);
+      Get.offAllNamed(HomeScreen.route);
     } catch (e) {
       Get.defaultDialog(title: 'Erro', middleText: 'Email já existente, tente logar!');
     }

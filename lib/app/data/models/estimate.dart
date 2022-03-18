@@ -11,6 +11,15 @@ class Estimativa {
 
   Estimativa(this.hectares, this.tempoPlantacao, this.regiao, this.vazao, this.preparacaoSolo, this.gastoDeAgua, this.volume);
 
+  Estimativa.fromString(Map<String, dynamic> json)
+      : hectares = double.parse(json['hectares'].toString()),
+        tempoPlantacao = int.parse(json['tempo_de_plantacao'].toString()),
+        regiao = json['regiao'].toString(),
+        vazao = double.parse(json['vazao'].toString()),
+        preparacaoSolo = int.parse(json['preparacao_do_solo'].toString()),
+        gastoDeAgua = double.parse(json['gasto_de_agua'].toString()),
+        volume = double.parse(json['volume'].toString());
+
   Estimativa.fromJson(Map<String, dynamic> json)
       : hectares = json['Hectares'].toString() == 'null' ? '' : json['Hectares'],
         tempoPlantacao = json['Tempo_de_plantacao'].toString() == 'null' ? '' : json['Tempo_de_plantacao'],
