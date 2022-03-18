@@ -107,7 +107,7 @@ class WaterSavingsScreen extends StatelessWidget {
             leading: Padding(
               padding: const EdgeInsets.only(left: 8.0, top: 8),
               child: GestureDetector(
-                onTap: () => Get.previousRoute == EstimateResultScreen.route ? Get.back() : Get.offAndToNamed(EstimateResultScreen.route),
+                onTap: () => Get.back(),
                 child: Row(
                   children: const [
                     Icon(
@@ -137,7 +137,7 @@ class WaterSavingsScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, top: 8),
                 child: GestureDetector(
-                  onTap: () => Get.previousRoute == EstimateResultScreen.route ? Get.back() : Get.offAndToNamed(EstimateResultScreen.route),
+                  onTap: () => Get.back(),
                   child: Row(
                     children: const [
                       Icon(
