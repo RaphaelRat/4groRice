@@ -9,25 +9,15 @@ class Estimativa {
   late double gastoDeAgua;
   late double volume;
 
-  Estimativa(this.hectares, this.tempoPlantacao, this.regiao, this.vazao,
-      this.preparacaoSolo, this.gastoDeAgua, this.volume);
+  Estimativa(this.hectares, this.tempoPlantacao, this.regiao, this.vazao, this.preparacaoSolo, this.gastoDeAgua, this.volume);
 
   Estimativa.fromJson(Map<String, dynamic> json)
-      : hectares =
-            json['Hectares'].toString() == 'null' ? '' : json['Hectares'],
-        tempoPlantacao = json['Tempo_de_plantacao'].toString() == 'null'
-            ? ''
-            : json['Tempo_de_plantacao'],
-        regiao = json['Regiao'].toString() == 'null'
-            ? ''
-            : json['Regiao'].toString(),
+      : hectares = json['Hectares'].toString() == 'null' ? '' : json['Hectares'],
+        tempoPlantacao = json['Tempo_de_plantacao'].toString() == 'null' ? '' : json['Tempo_de_plantacao'],
+        regiao = json['Regiao'].toString() == 'null' ? '' : json['Regiao'].toString(),
         vazao = json['Vazao'].toString() == 'null' ? '' : json['Vazao'],
-        preparacaoSolo = json['Preparacao_do_solo'].toString() == 'null'
-            ? ''
-            : json['Preparacao_do_solo'],
-        gastoDeAgua = json['Gasto_de_agua'].toString() == 'null'
-            ? ''
-            : json['Gasto_de_agua'],
+        preparacaoSolo = json['Preparacao_do_solo'].toString() == 'null' ? '' : json['Preparacao_do_solo'],
+        gastoDeAgua = json['Gasto_de_agua'].toString() == 'null' ? '' : json['Gasto_de_agua'],
         volume = json['Volume'].toString() == 'null' ? '' : json['Volume'];
 
   Map<String, dynamic> toJson() => {
@@ -40,8 +30,8 @@ class Estimativa {
         'volume': volume,
       };
 
-  double calculaGasto(String regiao, double vazao, int preparacaoSolo,
-      int tempoPlantacao, double hectares) {
+  double calculaGasto(
+      {required String regiao, required double vazao, int preparacaoSolo = 0, required int tempoPlantacao, required double hectares}) {
     double valorInicial = 0;
     double valorFinal = 0;
 
@@ -66,8 +56,7 @@ class Estimativa {
 
     double evapotranspiracao = (valorInicial + valorFinal) / 2;
     double perdaDeAguaPorDia = evapotranspiracao + vazao;
-    double gastoDeAguaTotalParaCm2 =
-        perdaDeAguaPorDia * (preparacaoSolo + tempoPlantacao);
+    double gastoDeAguaTotalParaCm2 = perdaDeAguaPorDia * (preparacaoSolo + tempoPlantacao);
     double gastoDeAguaTotal = gastoDeAguaTotalParaCm2 * 10000 * hectares;
     return gastoDeAguaTotal;
   }
