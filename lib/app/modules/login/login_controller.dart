@@ -13,6 +13,15 @@ class LoginController extends GetxController {
 
   final webClient = WebClient();
 
+  @override
+  void onInit() async {
+    final token = await UserSecureStorage.getjwt();
+    if (token != null) {
+      Get.offAllNamed(HomeScreen.route);
+    }
+    super.onInit();
+  }
+
   void login() async {
     if (emailController.text.isEmpty || senhaController.text.isEmpty) {
       Get.defaultDialog(title: 'Erro', middleText: 'Preencha todos os campos!');

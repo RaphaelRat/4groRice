@@ -2,6 +2,7 @@ import 'package:agrorice/app/core/utils/user_secure_storage.dart';
 import 'package:agrorice/app/data/models/estimate.dart';
 import 'package:agrorice/app/data/providers/web_client/web_client.dart';
 import 'package:agrorice/app/modules/estimate_result/estimate_result.dart';
+import 'package:agrorice/app/modules/login/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -100,5 +101,10 @@ class HomeController extends GetxController {
 
     refreshField();
     Get.to(EstimateResultScreen(estimativa: estimativa));
+  }
+
+  void logout() async {
+    Get.offAllNamed(LoginScreen.route);
+    await UserSecureStorage.removeAll();
   }
 }

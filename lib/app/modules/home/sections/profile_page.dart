@@ -93,7 +93,7 @@ class ProfilePage extends GetView<HomeController> {
           ),
         ),
         TextButton(
-          onPressed: () => Get.offAllNamed(LoginScreen.route),
+          onPressed: controller.logout,
           child: const Text('SAIR'),
         ),
       ],

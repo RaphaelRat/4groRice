@@ -49,4 +49,8 @@ class UserSecureStorage {
 
     return value == null ? null : lista;
   }
+
+  static Future removeAll() async {
+    await _storage.deleteAll();
+  }
 }
