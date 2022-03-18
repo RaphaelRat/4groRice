@@ -9,6 +9,7 @@ class HomeController extends GetxController {
   final solo = false.obs;
   final isObscureText = false.obs;
   final isEstimativasLoading = true.obs;
+  final hideCard = false.obs;
 
   String? nome;
   String? email;
@@ -36,6 +37,7 @@ class HomeController extends GetxController {
     _token = await UserSecureStorage.getjwt();
     estimativas = await UserSecureStorage.getEstimates();
 
+    hideCard.value = estimativas?.isNotEmpty ?? false;
     isEstimativasLoading.value = false;
   }
 

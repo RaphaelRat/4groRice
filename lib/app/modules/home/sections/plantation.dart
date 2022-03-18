@@ -25,7 +25,7 @@ class PlantationSection extends GetView<HomeController> {
             ),
           ),
         ),
-        _cardBox(context),
+        Obx(() => controller.hideCard.value ? Container() : _cardBox(context)),
         Obx(
           () => controller.isEstimativasLoading.value
               ? const Padding(
@@ -36,7 +36,21 @@ class PlantationSection extends GetView<HomeController> {
                   child: ListView.builder(
                     itemCount: controller.estimativas?.length ?? 0,
                     itemBuilder: (context, index) {
-                      return fieldsWidget(estimativa: controller.estimativas?.elementAt(index), hasDivider: true);
+                      return index == 0
+                          ? Column(
+                              children: [
+                                _cardBox(context),
+                                const SizedBox(height: 8),
+                                fieldsWidget(
+                                  estimativa: controller.estimativas?.elementAt(index),
+                                  hasDivider: controller.estimativas?.length == index + 1 ? false : true,
+                                )
+                              ],
+                            )
+                          : fieldsWidget(
+                              estimativa: controller.estimativas?.elementAt(index),
+                              hasDivider: controller.estimativas?.length == index + 1 ? false : true,
+                            );
                     },
                   ),
                 ),
