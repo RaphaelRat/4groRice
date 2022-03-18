@@ -71,9 +71,12 @@ class ProfilePage extends GetView<ProfileController> {
                           border: const OutlineInputBorder(),
                           suffixIcon: IconButton(
                             icon: Icon(
-                              controller.isObscureText.value ? Icons.visibility : Icons.visibility_off,
+                              controller.isObscureText.value
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
                             ),
-                            onPressed: () => controller.isObscureText.value = !controller.isObscureText.value,
+                            onPressed: () => controller.isObscureText.value =
+                                !controller.isObscureText.value,
                           ),
                         ),
                       ),
@@ -103,7 +106,12 @@ class ProfilePage extends GetView<ProfileController> {
                   backgroundColor: Colors.white,
                   child: CircleAvatar(
                     radius: 30,
-                    backgroundImage: AssetImage('assets/images/igor_picture.jpg'),
+                    backgroundColor: Color.fromARGB(255, 249, 251, 238),
+                    child: Icon(
+                      Icons.face,
+                      color: Color.fromARGB(255, 65, 112, 110),
+                      size: 28,
+                    ),
                   ),
                 ),
               ),
