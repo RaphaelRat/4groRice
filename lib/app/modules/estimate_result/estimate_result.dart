@@ -107,6 +107,8 @@ class EstimateResultScreen extends StatelessWidget {
     if (estimativa?.gastoDeAgua != 0) {
       gasto = estimativa!.gastoDeAgua / 1000;
     }
+
+    final quantPessoas = gasto / 39.6;
     return responsiveContainer(
       child: Container(
         margin: const EdgeInsets.fromLTRB(24, 0, 24, 12),
@@ -132,11 +134,11 @@ class EstimateResultScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 67),
               child: Image.asset('assets/images/people_picture.png'),
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 12, right: 12, bottom: 26),
+            Padding(
+              padding: const EdgeInsets.only(left: 12, right: 12, bottom: 26),
               child: Text(
-                'Que equivale a quantidade de água que 6 pessoas usam para viver durante um ano',
-                style: TextStyle(
+                'Que equivale a quantidade de água que ${quantPessoas.toStringAsFixed(0)} pessoas usam para viver durante um ano',
+                style: const TextStyle(
                   color: Color.fromARGB(255, 132, 170, 255),
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
