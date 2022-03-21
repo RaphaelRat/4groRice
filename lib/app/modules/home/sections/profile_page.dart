@@ -2,7 +2,6 @@ import 'package:agrorice/app/modules/home/home/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../login/login.dart';
 import '../../../global_widgets/global_widgets.dart';
 
 class ProfilePage extends GetView<HomeController> {
@@ -61,7 +60,7 @@ class ProfilePage extends GetView<HomeController> {
                       initialValue: controller.estimativas?.length.toString() ?? 'Sem cálculos registrados!',
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
-                        border: const OutlineInputBorder(),
+                        border: OutlineInputBorder(),
                       ),
                     ),
                   ),

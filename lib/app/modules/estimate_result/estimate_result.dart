@@ -1,10 +1,9 @@
-import 'package:agrorice/app/data/models/estimate.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-import '../home/home/home.dart';
 import '../water_savings/water_savings.dart';
 import '../../global_widgets/global_widgets.dart';
+import '../../data/models/estimate.dart';
 
 class EstimateResultScreen extends StatelessWidget {
   static const route = '/estimate_result';

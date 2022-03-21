@@ -4,6 +4,7 @@ import 'package:agrorice/app/data/providers/web_client/web_client.dart';
 import 'package:agrorice/app/modules/estimate_result/estimate_result.dart';
 import 'package:agrorice/app/modules/login/login.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
@@ -92,7 +93,9 @@ class HomeController extends GetxController {
       // await UserSecureStorage.setEstimates(estimates);
 
     } catch (e) {
-      print('\nERRO\n$e');
+      if (kDebugMode) {
+        print('\nERRO\n$e');
+      }
       Get.defaultDialog(title: 'Erro', middleText: 'Erro ao enviar para o servidor');
       return;
     }

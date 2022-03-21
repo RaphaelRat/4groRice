@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../global_widgets/global_widgets.dart';
-import '../estimate_result/estimate_result.dart';
 
 class WaterSavingsScreen extends StatelessWidget {
   static const route = '/water_savings';

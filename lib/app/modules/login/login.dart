@@ -2,7 +2,6 @@ import 'package:agrorice/app/modules/login/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../home/home/home.dart';
 import '../register/register.dart';
 import '../../global_widgets/responsive_container.dart';
 

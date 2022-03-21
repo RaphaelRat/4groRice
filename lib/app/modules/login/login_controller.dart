@@ -40,7 +40,9 @@ class LoginController extends GetxController {
       await UserSecureStorage.setEstimates(estimates);
       Get.offAllNamed(HomeScreen.route);
     } catch (e) {
-      print('\nERRO\n$e');
+      if (kDebugMode) {
+        print('\nERRO\n$e');
+      }
       Get.defaultDialog(title: 'Erro', middleText: 'Usuário e/ou senha incorreto(s)!');
     }
   }
