@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.teal),
       initialRoute: '/login',
       getPages: getAppPages(),
+      themeMode: ThemeMode.light,
     );
   }
 }
