@@ -34,22 +34,23 @@ class PlantationSection extends GetView<HomeController> {
                 )
               : Expanded(
                   child: ListView.builder(
+                    reverse: true,
                     itemCount: controller.estimativas?.length ?? 0,
                     itemBuilder: (context, index) {
-                      return index == 0
+                      return index + 1 == (controller.estimativas?.length)
                           ? Column(
                               children: [
                                 _cardBox(context),
                                 const SizedBox(height: 8),
                                 fieldsWidget(
                                   estimativa: controller.estimativas?.elementAt(index),
-                                  hasDivider: controller.estimativas?.length == index + 1 ? false : true,
-                                )
+                                  hasDivider: 0 == index ? false : true,
+                                ),
                               ],
                             )
                           : fieldsWidget(
                               estimativa: controller.estimativas?.elementAt(index),
-                              hasDivider: controller.estimativas?.length == index + 1 ? false : true,
+                              hasDivider: 0 == index ? false : true,
                             );
                     },
                   ),
