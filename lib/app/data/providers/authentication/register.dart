@@ -5,6 +5,7 @@ Future<user.User> register({required String email, required String senha, requir
   try {
     UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: senha);
     userCredential.user?.updateDisplayName(nome);
+    userCredential.user?.reload();
 
     final currentUser = userCredential.user!;
 
