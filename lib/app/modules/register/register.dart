@@ -1,7 +1,7 @@
 // ignore_for_file: unnecessary_const
 
 import 'package:agrorice/app/data/providers/web_client/web_client.dart';
-import 'package:agrorice/app/modules/login/login.dart';
+import 'package:agrorice/app/modules/login/login_page.dart';
 import 'package:agrorice/app/modules/register/register_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

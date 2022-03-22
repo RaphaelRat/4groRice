@@ -1,56 +1,55 @@
-import 'package:agrorice/app/core/utils/user_secure_storage.dart';
-import 'package:agrorice/app/data/providers/web_client/web_client.dart';
-import 'package:agrorice/app/modules/home/home/home.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
+import '../../data/repository/authentication.dart';
+
 class LoginController extends GetxController {
-  final emailController = TextEditingController(text: kDebugMode ? 'raphael@contato.com' : '');
-  final senhaController = TextEditingController(text: kDebugMode ? '123123' : '');
+  String email = kDebugMode ? 'raphaelrat@hotmail.com' : '';
+  String password = kDebugMode ? '123123' : '';
+  bool isFieldsEmpty = true;
 
   final isObscureText = true.obs;
-
-  final webClient = WebClient();
-
-  @override
-  void onInit() async {
-    final token = await UserSecureStorage.getjwt();
-    if (token != null) {
-      Get.offAllNamed(HomeScreen.route);
-    }
-    super.onInit();
-  }
+  final errorMessage = ''.obs;
+  final isLoading = false.obs;
+  final isAuth = false.obs;
 
   void login() async {
-    if (emailController.text.isEmpty || senhaController.text.isEmpty) {
-      Get.defaultDialog(title: 'Erro', middleText: 'Preencha todos os campos!');
+    isLoading.value = true;
+
+    _updateErrorMessage();
+    if (isFieldsEmpty) {
       return;
     }
-    try {
-      final response = await webClient.postLoginUser(emailController.text, senhaController.text);
 
-      final jwt = response.jwt;
-      final username = response.username;
-      final email = response.email;
-      final estimates = await webClient.getEstimativasUsuario(jwt);
-      await UserSecureStorage.setjwt(jwt);
-      await UserSecureStorage.setUsername(username);
-      await UserSecureStorage.setEmail(email);
-      await UserSecureStorage.setEstimates(estimates);
-      Get.offAllNamed(HomeScreen.route);
-    } catch (e) {
-      if (kDebugMode) {
-        print('\nERRO\n$e');
-      }
-      Get.defaultDialog(title: 'Erro', middleText: 'Usuário e/ou senha incorreto(s)!');
+    errorMessage.value = await Authentication.login(email: email, senha: password) ?? '';
+    isLoading.value = false;
+
+    if (errorMessage.value.isEmpty) {
+      isAuth.value = true;
+      await Future.delayed(const Duration(seconds: 1));
+      // Navigate to Home
+      isAuth.value = false;
     }
   }
 
-  @override
-  void dispose() {
-    emailController.dispose();
-    senhaController.dispose();
-    super.dispose();
+  void validateEmail(String? email) {
+    this.email = email?.replaceAll(' ', '') ?? '';
+    _updateErrorMessage();
+  }
+
+  void validatePassword(String? password) {
+    this.password = password ?? '';
+    _updateErrorMessage();
+  }
+
+  void _updateErrorMessage() {
+    if (email.isEmpty || password.isEmpty) {
+      errorMessage.value = "Preencha todos os campos!";
+      isLoading.value = false;
+      isFieldsEmpty = true;
+      return;
+    }
+    isFieldsEmpty = false;
+    errorMessage.value = '';
   }
 }

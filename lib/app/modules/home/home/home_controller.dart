@@ -2,7 +2,7 @@ import 'package:agrorice/app/core/utils/user_secure_storage.dart';
 import 'package:agrorice/app/data/models/estimate.dart';
 import 'package:agrorice/app/data/providers/web_client/web_client.dart';
 import 'package:agrorice/app/modules/estimate_result/estimate_result.dart';
-import 'package:agrorice/app/modules/login/login.dart';
+import 'package:agrorice/app/modules/login/login_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
