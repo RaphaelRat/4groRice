@@ -102,7 +102,7 @@ class RegisterScreen extends GetView<RegisterController> {
                                   ? const Icon(Icons.done, color: Colors.teal, size: 36)
                                   : ElevatedButton(
                                       onPressed: controller.registrar,
-                                      child: const Text('ENTRAR'),
+                                      child: const Text('CRIAR CONTA'),
                                     ),
                         ],
                       ),
