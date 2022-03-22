@@ -36,32 +36,32 @@ class RegisterScreen extends GetView<RegisterController> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(18, 48, 18, 18),
-                    child: Column(
-                      children: [
-                        TextField(
-                          controller: controller.nomeController,
-                          decoration: const InputDecoration(
-                            border: const OutlineInputBorder(),
-                            labelText: 'Nome',
+                    child: Obx(
+                      () => Column(
+                        children: [
+                          TextField(
+                            onChanged: controller.validateName,
+                            decoration: const InputDecoration(
+                              border: const OutlineInputBorder(),
+                              labelText: 'Nome',
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        TextField(
-                          keyboardType: TextInputType.emailAddress,
-                          controller: controller.emailController,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Email',
+                          const SizedBox(
+                            height: 12,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        Obx(
-                          () => TextField(
-                            controller: controller.senha1Controller,
+                          TextField(
+                            onChanged: controller.validateEmail,
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Email',
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          TextField(
+                            onChanged: controller.validatePassword,
                             keyboardType: TextInputType.visiblePassword,
                             obscureText: controller.isObscureText.value,
                             decoration: InputDecoration(
@@ -75,48 +75,37 @@ class RegisterScreen extends GetView<RegisterController> {
                               ),
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        TextField(
-                          keyboardType: TextInputType.visiblePassword,
-                          controller: controller.senha2Controller,
-                          obscureText: true,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Confirmar senha',
+                          const SizedBox(
+                            height: 12,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            textStyle: const TextStyle(),
+                          TextField(
+                            keyboardType: TextInputType.visiblePassword,
+                            onChanged: controller.validatePassword2,
+                            obscureText: true,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Confirmar senha',
+                            ),
                           ),
-                          onPressed: controller.registrar,
-                          // () async {
-                          // webClient.postNovaEstimativa(
-                          //   token:
-                          //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjQ3NTUzNjMzLCJleHAiOjE2NTAxNDU2MzN9.jPoTGSW620bsaN17589oTQeMiWUQK0h_8zoV3mGCHYw',
-                          //   hectares: 15.8,
-                          //   tempoPlantacao: 15,
-                          //   regiao: 'Norte',
-                          //   vazao: 123.321,
-                          //   preparacaoSolo: 22,
-                          //   gastoDeAgua: 321.123,
-                          //   volume: 444.555,
-                          // );
-                          // webClient.postRegisterUser('Raphael Teste2', 'raphael2@contato.com', '123123');
-                          // webClient.postLoginUser('raphael2@contato.com', '123123');
-                          // final lista = await webClient.getEstimativasUsuario(
-                          //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjQ3NTUzNjMzLCJleHAiOjE2NTAxNDU2MzN9.jPoTGSW620bsaN17589oTQeMiWUQK0h_8zoV3mGCHYw");
-                          // print(lista.elementAt(0).regiao);
-                          // },
-                          child: const Text('REGISTRAR'),
-                        ),
-                      ],
+                          controller.errorMessage.value.isNotEmpty ? const SizedBox(height: 12) : Container(),
+                          controller.errorMessage.value.isNotEmpty
+                              ? Text(
+                                  controller.errorMessage.value,
+                                  textAlign: TextAlign.left,
+                                  style: const TextStyle(color: Colors.red),
+                                )
+                              : Container(),
+                          const SizedBox(height: 12),
+                          controller.isLoading.value
+                              ? const CircularProgressIndicator()
+                              : controller.isAuth.value
+                                  ? const Icon(Icons.done, color: Colors.teal, size: 36)
+                                  : ElevatedButton(
+                                      onPressed: controller.registrar,
+                                      child: const Text('ENTRAR'),
+                                    ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
