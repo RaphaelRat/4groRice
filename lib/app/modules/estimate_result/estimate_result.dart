@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../water_savings/water_savings.dart';
 import '../../global_widgets/global_widgets.dart';
-import '../../data/models/estimate.dart';
+import '../../data/models/estimate_model.dart';
 
 class EstimateResultScreen extends StatelessWidget {
   static const route = '/estimate_result';

@@ -1,4 +1,4 @@
-import 'package:agrorice/app/data/models/estimate.dart';
+import 'package:agrorice/app/data/models/estimate_model.dart';
 import 'package:flutter/material.dart';
 
 import 'responsive_container.dart';
