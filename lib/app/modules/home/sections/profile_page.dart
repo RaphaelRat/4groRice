@@ -27,7 +27,7 @@ class ProfilePage extends GetView<HomeController> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
                     child: TextFormField(
-                      initialValue: controller.nome ?? 'Usuário sem nome!',
+                      initialValue: controller.user.name,
                       enabled: false,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -42,7 +42,7 @@ class ProfilePage extends GetView<HomeController> {
                     padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
                     child: TextFormField(
                       enabled: false,
-                      initialValue: controller.email ?? 'Usuário sem email!',
+                      initialValue: controller.user.email,
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -51,13 +51,13 @@ class ProfilePage extends GetView<HomeController> {
                   ),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(24, 12, 24, 6),
-                    child: Text('Quantidade de cálculos:'),
+                    child: Text('Quantidade de cálculos no histórico:'),
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
                     child: TextFormField(
                       enabled: false,
-                      initialValue: controller.estimativas?.length.toString() ?? 'Sem cálculos registrados!',
+                      initialValue: controller.estimates.length.toString(),
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -78,7 +78,7 @@ class ProfilePage extends GetView<HomeController> {
       children: [
         Expanded(
           child: Text(
-            'Bem vindo(a) ao seu perfil,\n${controller.nome ?? 'Usuário sem nome'}',
+            'Bem vindo(a) ao seu perfil,\n${controller.user.name}',
             style: const TextStyle(
               color: Color.fromARGB(255, 65, 112, 110),
               fontSize: 18,

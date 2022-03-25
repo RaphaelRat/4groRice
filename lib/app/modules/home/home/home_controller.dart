@@ -1,7 +1,10 @@
 import 'package:agrorice/app/data/models/estimate_model.dart';
+import 'package:agrorice/app/data/models/user_model.dart';
 import 'package:agrorice/app/data/repository/estimate.dart';
+import 'package:agrorice/app/data/repository/user.dart';
 import 'package:agrorice/app/modules/estimate_result/estimate_result.dart';
 import 'package:agrorice/app/modules/login/login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
@@ -74,6 +77,14 @@ class HomeController extends GetxController {
     Get.to(() => EstimateResultScreen(estimativa: estimativa));
   }
 
+// Profile controller
+  User user = getUser();
+
+  void logout() async {
+    Get.offAllNamed(LoginScreen.route);
+    firebase.FirebaseAuth.instance.signOut();
+  }
+
   // OnInit geral
   @override
   void onInit() async {
@@ -86,12 +97,4 @@ class HomeController extends GetxController {
     // Super
     super.onInit();
   }
-
-//outros
-
-  final isObscureText = false.obs;
-  String? nome;
-  String? email;
-  String? _token;
-  List<Estimativa>? estimativas;
 }
