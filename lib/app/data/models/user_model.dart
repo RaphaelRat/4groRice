@@ -14,7 +14,7 @@ class User {
         email = currentUser.email!,
         photo = currentUser.photoURL;
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     return {
       "id": id,
       "name": name,

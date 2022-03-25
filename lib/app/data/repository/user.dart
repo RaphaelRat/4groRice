@@ -1,10 +1,4 @@
-import 'package:agrorice/app/data/models/user_model.dart' as user_model;
-import 'package:firebase_auth/firebase_auth.dart';
+import '../providers/user/user.dart' as user_provider;
+import '../models/user_model.dart';
 
-class User {
-  final userFirebase = FirebaseAuth.instance.currentUser!;
-
-  user_model.User getUser() {
-    return user_model.User.fromSnapshot(userFirebase);
-  }
-}
+User getUser() => user_provider.getUser();
