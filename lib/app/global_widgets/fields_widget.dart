@@ -36,7 +36,7 @@ Widget fieldsWidget({
             right: columnOfFields(
                 field: 'Gasto de água', value: '${gastoDeAgua?.toStringAsFixed(2) ?? '?'} m³', color: const Color.fromARGB(255, 65, 112, 110)),
           ),
-          hasDivider ? const SizedBox(height: 22) : Container(),
+          const SizedBox(height: 22),
           hasDivider ? const Divider(color: Color.fromARGB(255, 212, 232, 231), thickness: 1) : Container(),
         ],
       ),

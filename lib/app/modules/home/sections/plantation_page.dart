@@ -25,7 +25,7 @@ class PlantationSection extends GetView<HomeController> {
             ),
           ),
         ),
-        Obx(() => controller.hideCard.value ? Container() : _cardBox(context)),
+        Obx(() => controller.estimates.isNotEmpty ? Container() : _cardBox(context)),
         Obx(
           () => controller.isEstimativasLoading.value
               ? const Padding(
@@ -34,23 +34,24 @@ class PlantationSection extends GetView<HomeController> {
                 )
               : Expanded(
                   child: ListView.builder(
-                    reverse: true,
-                    itemCount: controller.estimativas?.length ?? 0,
+                    itemCount: controller.estimates.length,
                     itemBuilder: (context, index) {
-                      return index + 1 == (controller.estimativas?.length)
+                      int reversedIndex = controller.estimates.length - index - 1;
+
+                      return index == 0
                           ? Column(
                               children: [
                                 _cardBox(context),
                                 const SizedBox(height: 8),
                                 fieldsWidget(
-                                  estimativa: controller.estimativas?.elementAt(index),
-                                  hasDivider: 0 == index ? false : true,
+                                  estimativa: controller.estimates.elementAt(reversedIndex),
+                                  hasDivider: 0 == reversedIndex ? false : true,
                                 ),
                               ],
                             )
                           : fieldsWidget(
-                              estimativa: controller.estimativas?.elementAt(index),
-                              hasDivider: 0 == index ? false : true,
+                              estimativa: controller.estimates.elementAt(reversedIndex),
+                              hasDivider: 0 == reversedIndex ? false : true,
                             );
                     },
                   ),

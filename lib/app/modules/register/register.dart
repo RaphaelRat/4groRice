@@ -1,6 +1,3 @@
-// ignore_for_file: unnecessary_const
-
-import 'package:agrorice/app/data/providers/web_client/web_client.dart';
 import 'package:agrorice/app/modules/login/login_page.dart';
 import 'package:agrorice/app/modules/register/register_controller.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +7,7 @@ import '../../global_widgets/responsive_container.dart';
 
 class RegisterScreen extends GetView<RegisterController> {
   static const route = '/register';
-  RegisterScreen({Key? key}) : super(key: key);
-
-  final webClient = WebClient();
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +37,7 @@ class RegisterScreen extends GetView<RegisterController> {
                           TextField(
                             onChanged: controller.validateName,
                             decoration: const InputDecoration(
-                              border: const OutlineInputBorder(),
+                              border: OutlineInputBorder(),
                               labelText: 'Nome',
                             ),
                           ),

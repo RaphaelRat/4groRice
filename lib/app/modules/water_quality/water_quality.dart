@@ -1,5 +1,5 @@
 import 'package:agrorice/app/global_widgets/global_widgets.dart';
-import 'package:agrorice/app/modules/home/home/home.dart';
+import 'package:agrorice/app/modules/home/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';

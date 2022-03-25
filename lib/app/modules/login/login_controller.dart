@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
+import '../home/home/home_page.dart';
 import '../../data/repository/authentication.dart';
 
 class LoginController extends GetxController {
@@ -27,7 +28,7 @@ class LoginController extends GetxController {
     if (errorMessage.value.isEmpty) {
       isAuth.value = true;
       await Future.delayed(const Duration(seconds: 1));
-      // Navigate to Home
+      Get.offAllNamed(HomeScreen.route);
       isAuth.value = false;
     }
   }
