@@ -1,7 +1,6 @@
+import 'package:agrorice/app/data/providers/authentication/logged.dart' as logged_provider;
 import 'package:agrorice/app/data/providers/authentication/login.dart' as login_provider;
 import 'package:agrorice/app/data/providers/authentication/register.dart' as register_provider;
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:get/get.dart';
 
 class Authentication {
   static Future<String?> register({required String email, required String senha, required String nome}) async {
@@ -20,5 +19,9 @@ class Authentication {
       return e.toString();
     }
     return null;
+  }
+
+  static bool isLogged() {
+    return logged_provider.isLogged();
   }
 }

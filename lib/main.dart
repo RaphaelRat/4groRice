@@ -1,3 +1,6 @@
+import 'package:agrorice/app/data/repository/authentication.dart';
+import 'package:agrorice/app/modules/home/home/home_page.dart';
+import 'package:agrorice/app/modules/login/login_page.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,7 +23,7 @@ class MyApp extends StatelessWidget {
       title: '4groRice',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.teal),
-      initialRoute: '/login',
+      initialRoute: Authentication.isLogged() ? HomeScreen.route : LoginScreen.route,
       getPages: getAppPages(),
       themeMode: ThemeMode.light,
     );
